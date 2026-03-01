@@ -7,7 +7,7 @@ I enjoy learning new technologies and continuously improving my skills.
 
 My goal is to become a professional software developer.
 
-"If you're gonna burn a bridge, you better hold your breath and learn to swim."
+> "If you're gonna burn a bridge, you better hold your breath and learn to swim."
 
 ## Skills
 
@@ -18,6 +18,7 @@ My goal is to become a professional software developer.
 
 ## Code Example
 
+```csharp
 class Program
 {
     static void Main()
@@ -25,6 +26,7 @@ class Program
         Console.WriteLine("Hello, World!");
     }
 }
+```
 
 ## Work Experience
 
@@ -43,7 +45,7 @@ More about my project: View Project
 
 ## English Level
 
-My English level is B1.
+My English level is **B1**.
 
 1. Reading  
 2. Writing  
