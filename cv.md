@@ -1,3 +1,5 @@
+# Olga Baturo
+![Profile Photo](photo_me.jpg)
 ## About Me
 
 I am a student at the BRU, majoring in software engineering.  
