@@ -63,12 +63,14 @@ button {
 
 .hero-area {
   width: 1440px;
-  height: 752px;
+  height: 711px;
   background-image: url("../../assets/images/hero-bg.jpg");
   background-repeat: no-repeat;
   background-size: 1440px auto;
   background-position: center -47px;
   color: #ffffff;
+  /*  обрезаем тут фон */
+  overflow: hidden;
 }
 
 .header {
@@ -212,3 +214,48 @@ button {
 .hero__button:hover {
   background-color: #225b93;
 }
+
+/* О компании, синий фон */
+.about {
+  width: 1440px;
+  height: 519px;
+  background-color: #08263f;
+  padding-top: 141px;
+}
+
+/* Контейнер текста */
+.about__content {
+  width: 850px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Маленькая строка сверху */
+.about__subtitle {
+  margin: 0 auto 11px;
+  text-align: center;
+
+  font-family: "Roboto", sans-serif;
+  font-size: 19px;
+  line-height: 30px;
+  font-weight: 400;
+  color: #fed097;
+
+  transform: translateY(-1px);
+}
+
+/* Основной белый текст */
+.about__title {
+  width: 831px;
+  margin: 0 auto;
+
+  font-family: "Roboto", sans-serif;
+  font-size: 36px;
+  line-height: 46px;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: #ffffff;
+
+  transform: translateY(18px);
+}
+
