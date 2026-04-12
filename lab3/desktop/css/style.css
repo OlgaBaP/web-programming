@@ -121,7 +121,7 @@ button {
   font-family: Arial, sans-serif;
   font-size: 16px;
   line-height: 16px;
-  font-weight: 400;
+  font-weight: 300;
   color: #ffffff;
   white-space: nowrap;
 }
@@ -181,13 +181,13 @@ button {
 
 .hero__title {
   font-family: "Roboto", sans-serif;
-  width: 418px;
-  font-size: 81px;
-  line-height: 81px;
-  font-weight: 400;
+  width: 423px;
+  font-size: 83px;
+  line-height: 80px;
+  font-weight: 401;
   letter-spacing: 0;
   color: #ffffff;
-  transform: translateY(1px);
+  transform: translateY(2px);
   margin-bottom: 0;
 }
 
@@ -207,7 +207,7 @@ button {
 
   font-size: 16px;
   line-height: 24px;
-  font-weight: 400;
+  font-weight: 300;
   color: #ffffff;
 }
 
@@ -238,7 +238,7 @@ button {
   font-family: "Roboto", sans-serif;
   font-size: 19px;
   line-height: 30px;
-  font-weight: 400;
+  font-weight: 300;
   color: #fed097;
 
   transform: translateY(-1px);
@@ -256,6 +256,5 @@ button {
   letter-spacing: 0;
   color: #ffffff;
 
-  transform: translateY(18px);
+  transform: translateY(19px);
 }
-
