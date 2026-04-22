@@ -258,3 +258,151 @@ button {
 
   transform: translateY(19px);
 }
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+/* Блок преимуществ */
+.promises {
+  width: 1440px;
+  height: 432px;
+  margin: 0 auto;
+  background-color: #edf3f6;
+
+  display: grid;
+  grid-template-columns: 70px 1300px 70px;
+  grid-template-rows: 71px 40px 47px 232px 42px;
+}
+
+/* Заголовок блока */
+.promises__title {
+  grid-column: 2;
+  grid-row: 2;
+  justify-self: center;
+  align-self: start;
+
+  width: 325px;
+  height: 40px;
+  margin: 0;
+
+  font-family: "Roboto", sans-serif;
+  font-size: 36px;
+  line-height: 40px;
+  font-weight: 400;
+  text-align: center;
+  color: #031622;
+
+  transform: translateY(-1px);
+}
+
+
+/* Сетка карточек */
+.promises__grid {
+  grid-column: 2;
+  grid-row: 4;
+
+  width: 1300px;
+  height: 232px;
+
+  display: grid;
+  grid-template-columns: repeat(4, 310px);
+  column-gap: 20px;
+}
+
+/* Карточка */
+.promises__card {
+  width: 310px;
+  height: 232px;
+
+  display: grid;
+  grid-template-columns: 15.5px 279px 15.5px;
+  grid-template-rows: 38px 24px 26px 20px 72px 52px;
+
+  text-align: center;
+}
+
+/* Общие позиции внутри карточки */
+.promises__icon-box,
+.promises__card-title,
+.promises__card-text {
+  grid-column: 2;
+  justify-self: center;
+  align-self: start;
+}
+
+/* Иконка */
+.promises__icon-box {
+  grid-row: 1;
+
+  width: 279px;
+  height: 38px;
+
+  display: grid;
+  place-items: center;
+
+  transform: translateY(-4px);
+}
+
+.promises__icon {
+  display: block;
+  object-fit: contain;
+}
+
+.promises__icon--smile {
+  width: 45px;
+  height: 38px;
+}
+
+.promises__icon--shield {
+  width: 32px;
+  height: 35px;
+}
+
+.promises__icon--tooth {
+  width: 25px;
+  height: 34px;
+}
+
+.promises__icon--star {
+  width: 36px;
+  height: 33px;
+}
+
+/* Заголовок карточки */
+.promises__card-title {
+  grid-row: 3;
+
+  width: 279px;
+  margin: 0;
+
+  font-family: "Roboto", sans-serif;
+  font-size: 24px;
+  line-height: 26px;
+  font-weight: 400;
+  text-align: center;
+  color: #031622;
+
+  transform: translateY(-10px);
+}
+
+/* Текст карточки */
+.promises__card-text {
+  grid-row: 5;
+
+  width: 268px;
+  margin: 0;
+
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  text-align: center;
+  color: #031622;
+
+  transform: translateY(2px);
+}
