@@ -723,6 +723,7 @@ button {
 .reviews__content {
   width: 1440px;
   height: 1094px;
+
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 128px 20px 25px 40px 102px 580px 153px;
@@ -732,9 +733,10 @@ button {
 .reviews__subtitle {
   grid-row: 2;
   margin: 0;
+
   font-family: "Roboto", sans-serif;
   font-size: 18px;
-  line-height: 1px;
+  line-height: 2px;
   font-weight: 400;
   text-align: center;
   color: #fed09f;
@@ -744,6 +746,7 @@ button {
   grid-row: 4;
   margin: 0;
   transform: translateY(3px);
+
   font-family: "Roboto", sans-serif;
   font-size: 36px;
   line-height: 40px;
@@ -756,6 +759,186 @@ button {
   grid-row: 6;
   width: 1407px;
   height: 580px;
-  object-fit: cover;
+
   display: block;
+  object-fit: cover;
+}
+
+/*Последний блок м докозательствами */
+.proof {
+  width: 1440px;
+  height: 1570px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 95px 620px 120px 650px 85px;
+}
+
+.proof__item {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+
+.proof__item--whiten {
+  grid-row: 2;
+  width: 1000px;
+  height: 620px;
+  margin-left: 220px;
+  transform: translate(-6px, 0);
+}
+
+.proof__item--guarantee {
+  grid-row: 4;
+  width: 1000px;
+  height: 650px;
+  margin-left: 220px;
+  transform: translate(-9px, 0);
+}
+
+.proof__image,
+.proof__card {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.proof__image {
+  display: block;
+  width: 850px;
+  height: 620px;
+  object-fit: cover;
+}
+
+.proof__image--whiten {
+  justify-self: start;
+  align-self: start;
+  transform: translate(-34px, 0);
+}
+
+.proof__image--guarantee {
+  justify-self: end;
+  align-self: start;
+  transform: translate(38px, 30px);
+}
+
+.proof__card {
+  width: 418px;
+  height: 480px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.proof__card--whiten {
+  justify-self: end;
+  align-self: start;
+  margin-top: 70px;
+  padding: 111px 40px 46px 49px;
+  background-color: #edf3f6;
+  transform: translate(48px, 17px);
+}
+
+.proof__card--guarantee {
+  justify-self: start;
+  align-self: start;
+  margin-top: 84px;
+  padding: 116px 50px 46px 52px;
+  background-color: #fff1d8;
+  transform: translate(-29px, 21px);
+}
+
+.proof__title {
+  margin: 0;
+  color: #031622;
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px;
+}
+
+.proof__text {
+  width: 310px;
+  max-width: 310px;
+  margin: 0;
+  color: #031622;
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.proof__card--whiten .proof__title {
+  margin-bottom: 42px;
+  transform: translate(2px, -13px);
+}
+
+.proof__card--guarantee .proof__title {
+  margin-bottom: 42px;
+  transform: translate(2px, -20px);
+}
+
+.proof__card--guarantee .proof__text {
+  transform: translate(2px, -8px);
+}
+
+.proof__button {
+  width: 170px;
+  height: 54px;
+  margin-top: auto;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #031622;
+  border-radius: 25px;
+  color: #031622;
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+
+  background-color: transparent;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.proof__card--whiten .proof__button {
+  transform: translate(0, 29px);
+}
+
+.proof__card--guarantee .proof__button {
+  transform: translate(0, 26px);
+}
+
+.proof__button:hover {
+  background-color: #031622;
+  color: #ffffff;
+}
+
+.hero__button,
+.products__promo-button,
+.products__card-button {
+  cursor: pointer;
+
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease,
+    filter 0.3s ease;
+}
+
+.hero__button:hover,
+.products__promo-button:hover,
+.products__card-button:hover {
+  background-color: #1a4a78;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  filter: brightness(1.5);
 }
