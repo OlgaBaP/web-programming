@@ -726,7 +726,7 @@ button {
 
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 128px 20px 25px 40px 102px 580px 153px;
+  grid-template-rows: 128px 20px 25px 40px 102px 580px 199px;
   justify-items: center;
 }
 
@@ -745,7 +745,7 @@ button {
 .reviews__title {
   grid-row: 4;
   margin: 0;
-  transform: translateY(3px);
+  transform: translateY(4px);
 
   font-family: "Roboto", sans-serif;
   font-size: 36px;
@@ -757,11 +757,59 @@ button {
 
 .reviews__image {
   grid-row: 6;
+
   width: 1407px;
   height: 580px;
 
-  display: block;
-  object-fit: cover;
+  background-image: url("../../assets/images/Customer-Reviews.png");
+  background-repeat: no-repeat;
+  background-size: 1407px 580px;
+  background-position: center;
+
+  display: grid;
+  place-items: center;
+}
+
+.reviews__card {
+  width: 404px;
+  height: 435px;
+  padding: 64px 40px 48px 48px;
+
+  background-color: #ffffff;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  text-align: left;
+
+  transform: translate(-44px, 8px);
+}
+
+.reviews__card-text {
+  width: 282px;
+  margin: 0;
+
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  line-height: 1.28;
+  font-weight: 500;
+  color: #08263f;
+
+  transform: translate(0, -16px);
+}
+
+.reviews__author {
+  margin: 0;
+
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 700;
+  color: #08263f;
+
+  transform: translateY(-6px);
 }
 
 /*Последний блок м докозательствами */
