@@ -520,3 +520,17 @@
     transform: none;
   }
 }
+
+@media (hover: hover) and (pointer: fine) {
+  .hero__button:hover {
+    transform: translateY(-3px) scale(1.03);
+  }
+
+  .products__card:hover .products__card-image--gel {
+    transform: scale(1.03);
+  }
+
+  .reviews__card:hover {
+    transform: translateY(-4px);
+  }
+}
