@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Auraglow Catalog</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/catalog.css" />
+    <script src="js/catalog.js" defer></script>
+  </head>
+
+  <body>
+    <div class="catalog-page">
+      <div class="catalog-top">
+        <p class="catalog-top__text">
+          New look, new products. Available exclusively at Auraglow.com
+        </p>
+      </div>
+
+      <header class="catalog-header">
+        <a
+          href="index.html"
+          class="catalog-header__logo"
+          aria-label="Auraglow home"
+        >
+          <img
+            src="../assets/images/logo.png"
+            alt="Auraglow"
+            class="catalog-header__logo-text"
+          />
+          <img
+            src="../assets/images/logo-icon.png"
+            alt=""
+            class="catalog-header__logo-icon"
+          />
+        </a>
+
+        <nav class="catalog-nav" aria-label="Main navigation">
+          <a href="index.html" class="catalog-nav__link">Home</a>
+          <a href="catalog.html" class="catalog-nav__link">Products</a>
+          <a href="index.html" class="catalog-nav__link">Our Story</a>
+          <a href="index.html" class="catalog-nav__link">Reviews</a>
+          <a href="index.html" class="catalog-nav__link">Virtual Mirror</a>
+        </nav>
+
+        <a href="#" class="catalog-header__cart" aria-label="Cart">
+          <img src="../assets/images/cart-icon.png" alt="" />
+        </a>
+      </header>
+
+      <main class="catalog-main">
+        <section class="catalog-hero">
+          <p class="catalog-hero__subtitle">Auraglow Products</p>
+          <h1 class="catalog-hero__title">Catalog for a brighter smile</h1>
+          <p class="catalog-hero__text">
+            Choose whitening kits, gels, accessories and daily oral care
+            products.
+          </p>
+        </section>
+
+        <section class="catalog-controls" aria-label="Catalog controls">
+          <label class="catalog-field">
+            <span>Search</span>
+            <input
+              type="search"
+              id="searchInput"
+              placeholder="Search by title or description"
+            />
+          </label>
+
+          <label class="catalog-field">
+            <span>Category</span>
+            <select id="categoryFilter">
+              <option value="all">All categories</option>
+            </select>
+          </label>
+
+          <label class="catalog-field">
+            <span>Sort by</span>
+            <select id="sortSelect">
+              <option value="default">Default</option>
+              <option value="title">Name</option>
+              <option value="price">Price</option>
+              <option value="rating">Rating</option>
+            </select>
+          </label>
+        </section>
+
+        <section class="array-methods" aria-label="Array methods">
+          <h2 class="array-methods__title">Array methods</h2>
+
+          <div class="array-methods__buttons">
+            <button type="button" data-method="map">map</button>
+            <button type="button" data-method="filter">filter</button>
+            <button type="button" data-method="sort">sort</button>
+            <button type="button" data-method="find">find</button>
+            <button type="button" data-method="some">some</button>
+            <button type="button" data-method="every">every</button>
+            <button type="button" data-method="reduce">reduce</button>
+            <button type="button" data-method="slice">slice</button>
+            <button type="button" data-method="reverse">reverse</button>
+            <button type="button" data-method="includes">includes</button>
+          </div>
+
+          <p class="array-methods__result" id="methodResult">
+            Press a method button to see the result.
+          </p>
+        </section>
+
+        <section class="catalog-list" aria-label="Product catalog">
+          <div class="catalog__grid" id="productsContainer"></div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="site-footer__inner">
+          <a href="#" class="site-footer__logo" aria-label="Auraglow">
+            <img
+              src="../assets/images/Logo-Auraglow.png"
+              alt="Auraglow"
+              class="site-footer__logo-image"
+            />
+          </a>
+
+          <nav
+            class="site-footer__nav site-footer__nav--products"
+            aria-label="Products"
+          >
+            <h2 class="site-footer__title">Products</h2>
+
+            <ul class="site-footer__list">
+              <li><a href="catalog.html">Complete LED Whitening Kit</a></li>
+              <li><a href="catalog.html">Custom Whitening Kit</a></li>
+              <li><a href="catalog.html">Whitening Strips</a></li>
+              <li><a href="catalog.html">Whitening Pen</a></li>
+              <li><a href="catalog.html">Daily Toothpaste</a></li>
+              <li><a href="catalog.html">Whitening Gel</a></li>
+              <li><a href="catalog.html">Extra Strength Whitening Gel</a></li>
+              <li><a href="catalog.html">LED Whitening Light</a></li>
+            </ul>
+          </nav>
+
+          <nav
+            class="site-footer__nav site-footer__nav--company"
+            aria-label="Company"
+          >
+            <h2 class="site-footer__title">Company</h2>
+
+            <ul class="site-footer__list">
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Reviews</a></li>
+              <li><a href="#">Our Story</a></li>
+              <li><a href="#">Guarantee</a></li>
+              <li><a href="#">Virtual Mirror</a></li>
+              <li><a href="#">Clinical Study</a></li>
+              <li><a href="#">Where to Buy</a></li>
+            </ul>
+          </nav>
+
+          <nav
+            class="site-footer__nav site-footer__nav--support"
+            aria-label="Support"
+          >
+            <h2 class="site-footer__title">Support</h2>
+
+            <ul class="site-footer__list">
+              <li><a href="#">FAQs</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+              <li><a href="#">Shipping &amp; Returns</a></li>
+            </ul>
+          </nav>
+
+          <div class="site-footer__subscribe">
+            <p class="site-footer__subscribe-text">
+              Sign up for the latest in oral wellness
+            </p>
+
+            <div class="site-footer__subscribe-line" aria-hidden="true"></div>
+
+            <button class="site-footer__subscribe-button" type="button">
+              Subscribe
+            </button>
+
+            <div class="site-footer__socials" aria-label="Social links">
+              <a
+                href="#"
+                class="site-footer__social-link"
+                aria-label="Facebook"
+              >
+                <img
+                  src="../assets/images/Vector-F.png"
+                  alt=""
+                  class="site-footer__social-icon site-footer__social-icon--facebook"
+                />
+              </a>
+
+              <a
+                href="#"
+                class="site-footer__social-link"
+                aria-label="Instagram"
+              >
+                <img
+                  src="../assets/images/Vector-Insta.png"
+                  alt=""
+                  class="site-footer__social-icon site-footer__social-icon--instagram"
+                />
+              </a>
+            </div>
+          </div>
+
+          <p class="site-footer__copyright">© Auraglow 2021</p>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

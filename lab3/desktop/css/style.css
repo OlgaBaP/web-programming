@@ -585,7 +585,7 @@ button {
 
   gap: 50px;
 
-  background-image: url("../../assets/images/product-whitening.png");
+  background-image: url("../../assets/product/product-whitening.png");
 }
 
 .products__promo--accessories {
@@ -595,7 +595,7 @@ button {
   gap: 43px;
   padding-bottom: 82px;
 
-  background-image: url("../../assets/images/product-accessories.png");
+  background-image: url("../../assets/product/product-accessories.png");
 }
 
 .products__promo-title {
