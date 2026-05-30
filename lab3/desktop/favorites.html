@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Auraglow Favorites</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/catalog.css" />
+    <script src="js/favorites.js" defer></script>
+  </head>
+
+  <body>
+    <div class="catalog-page">
+      <div class="catalog-top">
+        <p class="catalog-top__text">
+          New look, new products. Available exclusively at Auraglow.com
+        </p>
+      </div>
+
+      <header class="catalog-header">
+        <a
+          href="index.html"
+          class="catalog-header__logo"
+          aria-label="Auraglow home"
+        >
+          <img
+            src="../assets/images/logo.png"
+            alt="Auraglow"
+            class="catalog-header__logo-text"
+          />
+          <img
+            src="../assets/images/logo-icon.png"
+            alt=""
+            class="catalog-header__logo-icon"
+          />
+        </a>
+
+        <nav class="catalog-nav" aria-label="Main navigation">
+          <a href="index.html" class="catalog-nav__link">Home</a>
+          <a href="catalog.html" class="catalog-nav__link">Catalog</a>
+          <a href="favorites.html" class="catalog-nav__link">Favorites</a>
+          <a href="cart.html" class="catalog-nav__link">Cart</a>
+          <a href="index.html" class="catalog-nav__link">Our Story</a>
+          <a href="index.html" class="catalog-nav__link">Reviews</a>
+        </nav>
+
+        <a href="cart.html" class="catalog-header__cart" aria-label="Cart">
+          <img src="../assets/images/cart-icon.png" alt="" />
+        </a>
+      </header>
+
+      <main class="catalog-main">
+        <section class="catalog-hero">
+          <p class="catalog-hero__subtitle">Auraglow Favorites</p>
+          <h1 class="catalog-hero__title">Your favorite products</h1>
+          <p class="catalog-hero__text">
+            Save products you like and return to them later.
+          </p>
+        </section>
+
+        <section class="catalog-list" aria-label="Favorite products">
+          <div class="catalog__grid" id="favoritesContainer"></div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

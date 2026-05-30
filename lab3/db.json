@@ -10,8 +10,174 @@
       "image": "../assets/product/product-kit.png",
       "isPopular": true,
       "inStock": true
+    },
+    {
+      "id": 2,
+      "title": "Custom Whitening Kit",
+      "description": "A comfortable custom kit made for easy whitening treatments during the week.",
+      "category": "Whitening Kits",
+      "price": 95,
+      "rating": 4.8,
+      "image": "../assets/product/product-custom-kit.png",
+      "isPopular": true,
+      "inStock": true
+    },
+    {
+      "id": 3,
+      "title": "Whitening Strips",
+      "description": "Simple whitening strips for removing daily stains from coffee, tea and snacks.",
+      "category": "Whitening",
+      "price": 32,
+      "rating": 4.6,
+      "image": "../assets/product/product-strips.png",
+      "isPopular": false,
+      "inStock": true
+    },
+    {
+      "id": 4,
+      "title": "Whitening Pen",
+      "description": "A small brush pen for quick whitening touch-ups at home or while traveling.",
+      "category": "Whitening",
+      "price": 24,
+      "rating": 4.5,
+      "image": "../assets/product/product-pen.png",
+      "isPopular": true,
+      "inStock": true
+    },
+    {
+      "id": 5,
+      "title": "Daily Toothpaste",
+      "description": "Fresh daily toothpaste that supports a clean smile and gentle stain care.",
+      "category": "Toothpaste",
+      "price": 14,
+      "rating": 4.4,
+      "image": "../assets/product/product-toothpaste.png",
+      "isPopular": false,
+      "inStock": true
+    },
+    {
+      "id": 6,
+      "title": "Whitening Gel",
+      "description": "Dental-grade whitening gel for use with trays and LED whitening tools.",
+      "category": "Whitening Gel",
+      "price": 45,
+      "rating": 4.7,
+      "image": "../assets/product/product-gel.png",
+      "isPopular": true,
+      "inStock": true
+    },
+    {
+      "id": 7,
+      "title": "Extra Strength Whitening Gel",
+      "description": "A stronger gel refill for customers who want a more powerful whitening routine.",
+      "category": "Whitening Gel",
+      "price": 52,
+      "rating": 4.8,
+      "image": "../assets/product/product-extra-strength-gel.png",
+      "isPopular": true,
+      "inStock": true
+    },
+    {
+      "id": 8,
+      "title": "LED Whitening Light",
+      "description": "A reusable LED light that helps improve home whitening sessions.",
+      "category": "Accessories",
+      "price": 38,
+      "rating": 4.5,
+      "image": "../assets/product/product-led-light.png",
+      "isPopular": false,
+      "inStock": true
+    },
+    {
+      "id": 9,
+      "title": "Whitening Trays",
+      "description": "Soft trays for comfortable whitening with Auraglow gel products.",
+      "category": "Accessories",
+      "price": 20,
+      "rating": 4.3,
+      "image": "../assets/product/product-trays.png",
+      "isPopular": false,
+      "inStock": true
+    },
+    {
+      "id": 10,
+      "title": "Whitening Serum",
+      "description": "A smooth serum for brightening care and a polished finish after brushing.",
+      "category": "Whitening",
+      "price": 28,
+      "rating": 4.6,
+      "image": "../assets/product/product-serum.png",
+      "isPopular": false,
+      "inStock": true
+    },
+    {
+      "id": 11,
+      "title": "Whitening Refills",
+      "description": "Extra refill pieces for keeping your whitening routine ready for the next month.",
+      "category": "Refills",
+      "price": 30,
+      "rating": 4.4,
+      "image": "../assets/product/product-refills.png",
+      "isPopular": false,
+      "inStock": true
+    },
+    {
+      "id": 12,
+      "title": "Travel Whitening Kit",
+      "description": "A compact whitening kit for trips, weekends and busy schedules.",
+      "category": "Whitening Kits",
+      "price": 58,
+      "rating": 4.7,
+      "image": "../assets/product/product-travel-kit.png",
+      "isPopular": true,
+      "inStock": true
+    },
+    {
+      "id": 13,
+      "title": "Electric Toothbrush",
+      "description": "An electric toothbrush for daily cleaning with a clean Auraglow look.",
+      "category": "Toothbrushes",
+      "price": 70,
+      "rating": 4.8,
+      "image": "../assets/product/product-toothbrush.png",
+      "isPopular": true,
+      "inStock": true
+    },
+    {
+      "id": 14,
+      "title": "Bamboo Brush Heads",
+      "description": "Replacement brush heads made for a fresh brushing routine.",
+      "category": "Toothbrushes",
+      "price": 18,
+      "rating": 4.2,
+      "image": "../assets/product/product-brush-heads.png",
+      "isPopular": false,
+      "inStock": true
+    },
+    {
+      "id": 15,
+      "title": "Starter Oral Care Set",
+      "description": "A starter set with simple essentials for daily oral wellness.",
+      "category": "Sets",
+      "price": 64,
+      "rating": 4.9,
+      "image": "../assets/product/product-starter-set.png",
+      "isPopular": true,
+      "inStock": true
     }
   ],
-  "favorites": [],
+  "favorites": [
+    {
+      "id": 6,
+      "title": "Whitening Gel",
+      "description": "Dental-grade whitening gel for use with trays and LED whitening tools.",
+      "category": "Whitening Gel",
+      "price": 45,
+      "rating": 4.7,
+      "image": "../assets/product/product-gel.png",
+      "isPopular": true,
+      "inStock": true
+    }
+  ],
   "cart": []
 }

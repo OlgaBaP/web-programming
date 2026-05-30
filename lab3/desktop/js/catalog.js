@@ -1,202 +1,30 @@
-const products = [
-  {
-    id: 1,
-    title: "Complete LED Whitening Kit",
-    description:
-      "A full whitening kit with LED light, gel and trays for a bright smile at home.",
-    category: "Whitening Kits",
-    price: 80,
-    rating: 4.9,
-    image: "../assets/product/product-kit.png",
-    isPopular: true,
-    inStock: true,
-  },
-  {
-    id: 2,
-    title: "Custom Whitening Kit",
-    description:
-      "A comfortable custom kit made for easy whitening treatments during the week.",
-    category: "Whitening Kits",
-    price: 95,
-    rating: 4.8,
-    image: "../assets/product/product-custom-kit.png",
-    isPopular: true,
-    inStock: true,
-  },
-  {
-    id: 3,
-    title: "Whitening Strips",
-    description:
-      "Simple whitening strips for removing daily stains from coffee, tea and snacks.",
-    category: "Whitening",
-    price: 32,
-    rating: 4.6,
-    image: "../assets/product/product-strips.png",
-    isPopular: false,
-    inStock: true,
-  },
-  {
-    id: 4,
-    title: "Whitening Pen",
-    description:
-      "A small brush pen for quick whitening touch-ups at home or while traveling.",
-    category: "Whitening",
-    price: 24,
-    rating: 4.5,
-    image: "../assets/product/product-pen.png",
-    isPopular: true,
-    inStock: true,
-  },
-  {
-    id: 5,
-    title: "Daily Toothpaste",
-    description:
-      "Fresh daily toothpaste that supports a clean smile and gentle stain care.",
-    category: "Toothpaste",
-    price: 14,
-    rating: 4.4,
-    image: "../assets/product/product-toothpaste.png",
-    isPopular: false,
-    inStock: true,
-  },
-  {
-    id: 6,
-    title: "Whitening Gel",
-    description:
-      "Dental-grade whitening gel for use with trays and LED whitening tools.",
-    category: "Whitening Gel",
-    price: 45,
-    rating: 4.7,
-    image: "../assets/product/product-gel.png",
-    isPopular: true,
-    inStock: true,
-  },
-  {
-    id: 7,
-    title: "Extra Strength Whitening Gel",
-    description:
-      "A stronger gel refill for customers who want a more powerful whitening routine.",
-    category: "Whitening Gel",
-    price: 52,
-    rating: 4.8,
-    image: "../assets/product/product-extra-strength-gel.png",
-    isPopular: true,
-    inStock: true,
-  },
-  {
-    id: 8,
-    title: "LED Whitening Light",
-    description:
-      "A reusable LED light that helps improve home whitening sessions.",
-    category: "Accessories",
-    price: 38,
-    rating: 4.5,
-    image: "../assets/product/product-led-light.png",
-    isPopular: false,
-    inStock: true,
-  },
-  {
-    id: 9,
-    title: "Whitening Trays",
-    description:
-      "Soft trays for comfortable whitening with Auraglow gel products.",
-    category: "Accessories",
-    price: 20,
-    rating: 4.3,
-    image: "../assets/product/product-trays.png",
-    isPopular: false,
-    inStock: true,
-  },
-  {
-    id: 10,
-    title: "Whitening Serum",
-    description:
-      "A smooth serum for brightening care and a polished finish after brushing.",
-    category: "Whitening",
-    price: 28,
-    rating: 4.6,
-    image: "../assets/product/product-serum.png",
-    isPopular: false,
-    inStock: true,
-  },
-  {
-    id: 11,
-    title: "Whitening Refills",
-    description:
-      "Extra refill pieces for keeping your whitening routine ready for the next month.",
-    category: "Refills",
-    price: 30,
-    rating: 4.4,
-    image: "../assets/product/product-refills.png",
-    isPopular: false,
-    inStock: true,
-  },
-  {
-    id: 12,
-    title: "Travel Whitening Kit",
-    description:
-      "A compact whitening kit for trips, weekends and busy schedules.",
-    category: "Whitening Kits",
-    price: 58,
-    rating: 4.7,
-    image: "../assets/product/product-travel-kit.png",
-    isPopular: true,
-    inStock: true,
-  },
-  {
-    id: 13,
-    title: "Electric Toothbrush",
-    description:
-      "An electric toothbrush for daily cleaning with a clean Auraglow look.",
-    category: "Toothbrushes",
-    price: 70,
-    rating: 4.8,
-    image: "../assets/product/product-toothbrush.png",
-    isPopular: true,
-    inStock: true,
-  },
-  {
-    id: 14,
-    title: "Bamboo Brush Heads",
-    description: "Replacement brush heads made for a fresh brushing routine.",
-    category: "Toothbrushes",
-    price: 18,
-    rating: 4.2,
-    image: "../assets/product/product-brush-heads.png",
-    isPopular: false,
-    inStock: true,
-  },
-  {
-    id: 15,
-    title: "Starter Oral Care Set",
-    description:
-      "A starter set with simple essentials for daily oral wellness.",
-    category: "Sets",
-    price: 64,
-    rating: 4.9,
-    image: "../assets/product/product-starter-set.png",
-    isPopular: true,
-    inStock: true,
-  },
-];
+const API_URL = "http://localhost:3001";
+const PAGE_LIMIT = 6;
 
 const productsContainer = document.getElementById("productsContainer");
 const searchInput = document.getElementById("searchInput");
 const categoryFilter = document.getElementById("categoryFilter");
 const sortSelect = document.getElementById("sortSelect");
-const methodResult = document.getElementById("methodResult");
-const methodButtons = document.querySelectorAll("[data-method]");
+const stockFilter = document.getElementById("stockFilter");
+const popularFilter = document.getElementById("popularFilter");
+const minPriceInput = document.getElementById("minPriceInput");
+const maxPriceInput = document.getElementById("maxPriceInput");
+const prevPageButton = document.getElementById("prevPage");
+const nextPageButton = document.getElementById("nextPage");
+const pageNumber = document.getElementById("pageNumber");
 
-function renderProducts(list) {
+let currentPage = 1;
+
+function renderProducts(products) {
   productsContainer.innerHTML = "";
 
-  if (list.length === 0) {
+  if (products.length === 0) {
     productsContainer.innerHTML =
       '<p class="catalog-empty">No products found.</p>';
     return;
   }
 
-  list.forEach((product) => {
+  products.forEach((product) => {
     const card = document.createElement("article");
     card.className = "catalog-card";
 
@@ -215,7 +43,14 @@ function renderProducts(list) {
           <p class="catalog-card__price">$${product.price}</p>
           <p class="catalog-card__rating">Rating: ${product.rating}</p>
         </div>
-        <button class="catalog-card__button" type="button">Add To Cart</button>
+        <div class="catalog-card__actions">
+          <button class="catalog-card__button" type="button" data-action="favorite" data-id="${product.id}">
+            Add To Favorites
+          </button>
+          <button class="catalog-card__button" type="button" data-action="cart" data-id="${product.id}">
+            Add To Cart
+          </button>
+        </div>
       </div>
     `;
 
@@ -223,17 +58,87 @@ function renderProducts(list) {
   });
 }
 
-function fillCategoryFilter() {
-  const categories = products.map((product) => product.category);
-  const uniqueCategories = [];
+function getCatalogParams() {
+  const params = new URLSearchParams();
+  const searchText = searchInput.value.trim();
+  const category = categoryFilter.value;
+  const sortType = sortSelect.value;
+  const stock = stockFilter.value;
+  const popular = popularFilter.value;
+  const minPrice = minPriceInput.value.trim();
+  const maxPrice = maxPriceInput.value.trim();
+
+  if (searchText !== "") {
+    params.set("q", searchText);
+  }
+
+  if (category !== "all") {
+    params.set("category", category);
+  }
+
+  if (stock !== "all") {
+    params.set("inStock", stock);
+  }
+
+  if (popular !== "all") {
+    params.set("isPopular", popular);
+  }
+
+  if (minPrice !== "") {
+    params.set("price_gte", minPrice);
+  }
+
+  if (maxPrice !== "") {
+    params.set("price_lte", maxPrice);
+  }
+
+  if (sortType === "price") {
+    params.set("_sort", "price");
+    params.set("_order", "asc");
+  }
+
+  if (sortType === "title") {
+    params.set("_sort", "title");
+    params.set("_order", "asc");
+  }
+
+  if (sortType === "rating") {
+    params.set("_sort", "rating");
+    params.set("_order", "desc");
+  }
+
+  params.set("_page", currentPage);
+  params.set("_limit", PAGE_LIMIT);
+
+  return params;
+}
+
+async function loadProducts() {
+  const params = getCatalogParams();
+  const response = await fetch(`${API_URL}/products?${params.toString()}`);
+
+  if (!response.ok) {
+    throw new Error("Products loading error");
+  }
+
+  const data = await response.json();
+  const products = Array.isArray(data) ? data : data.data || [];
+
+  renderProducts(products);
+  updatePagination(products.length, data.next);
+}
+
+async function loadCategories() {
+  const response = await fetch(`${API_URL}/products`);
+
+  if (!response.ok) {
+    throw new Error("Categories loading error");
+  }
+
+  const products = await response.json();
+  const categories = new Set(products.map((product) => product.category));
 
   categories.forEach((category) => {
-    if (!uniqueCategories.includes(category)) {
-      uniqueCategories.push(category);
-    }
-  });
-
-  uniqueCategories.forEach((category) => {
     const option = document.createElement("option");
     option.value = category;
     option.textContent = category;
@@ -241,118 +146,127 @@ function fillCategoryFilter() {
   });
 }
 
-function getFilteredProducts() {
-  const searchText = searchInput.value.trim().toLowerCase();
-  const category = categoryFilter.value;
-  const sortType = sortSelect.value;
+function updatePagination(productsCount, nextPage) {
+  pageNumber.textContent = `Page ${currentPage}`;
+  prevPageButton.disabled = currentPage === 1;
+  nextPageButton.disabled = nextPage === null || productsCount < PAGE_LIMIT;
+}
 
-  let result = products.filter((product) => {
-    const text = `${product.title} ${product.description}`.toLowerCase();
-    const matchesSearch = text.includes(searchText);
-    const matchesCategory = category === "all" || product.category === category;
+function resetPageAndLoad() {
+  currentPage = 1;
+  loadProducts().catch(showLoadingError);
+}
 
-    return matchesSearch && matchesCategory;
+async function getProductById(id) {
+  const response = await fetch(`${API_URL}/products/${id}`);
+
+  if (!response.ok) {
+    throw new Error("Product loading error");
+  }
+
+  return response.json();
+}
+
+async function addToFavorites(productId) {
+  const product = await getProductById(productId);
+  const favoriteResponse = await fetch(`${API_URL}/favorites?id=${productId}`);
+  const favorites = await favoriteResponse.json();
+
+  if (favorites.length > 0) {
+    alert("This product is already in favorites.");
+    return;
+  }
+
+  await fetch(`${API_URL}/favorites`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(product),
   });
 
-  if (sortType === "title") {
-    result.sort((a, b) => a.title.localeCompare(b.title));
-  }
-
-  if (sortType === "price") {
-    result.sort((a, b) => a.price - b.price);
-  }
-
-  if (sortType === "rating") {
-    result.sort((a, b) => b.rating - a.rating);
-  }
-
-  return result;
+  alert("Product added to favorites.");
 }
 
-function updateCatalog() {
-  const result = getFilteredProducts();
-  renderProducts(result);
+async function addToCart(productId) {
+  const product = await getProductById(productId);
+  const cartResponse = await fetch(`${API_URL}/cart?id=${productId}`);
+  const cartItems = await cartResponse.json();
+
+  if (cartItems.length === 0) {
+    await fetch(`${API_URL}/cart`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        ...product,
+        quantity: 1,
+      }),
+    });
+  } else {
+    const cartItem = cartItems[0];
+
+    await fetch(`${API_URL}/cart/${cartItem.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        quantity: cartItem.quantity + 1,
+      }),
+    });
+  }
+
+  alert("Product added to cart.");
 }
 
-function showMethodResult(text) {
-  methodResult.textContent = text;
-}
+function handleProductsClick(event) {
+  const button = event.target.closest("[data-action]");
 
-function handleMethodButton(method) {
-  if (method === "map") {
-    const titles = products.map((product) => product.title);
-    showMethodResult(`map: ${titles.join(", ")}`);
+  if (!button) {
+    return;
   }
 
-  if (method === "filter") {
-    const popularProducts = products.filter((product) => product.isPopular);
-    renderProducts(popularProducts);
-    showMethodResult(
-      `filter: found ${popularProducts.length} popular products.`,
-    );
+  const productId = button.dataset.id;
+
+  if (button.dataset.action === "favorite") {
+    addToFavorites(productId).catch(() => {
+      alert("Could not add product to favorites.");
+    });
   }
 
-  if (method === "sort") {
-    const sortedProducts = products.slice().sort((a, b) => a.price - b.price);
-    renderProducts(sortedProducts);
-    showMethodResult("sort: products sorted by price from low to high.");
-  }
-
-  if (method === "find") {
-    const foundProduct = products.find(
-      (product) => product.category === "Accessories",
-    );
-    showMethodResult(
-      `find: ${foundProduct.title} is the first Accessories product.`,
-    );
-  }
-
-  if (method === "some") {
-    const hasExpensiveProduct = products.some((product) => product.price > 90);
-    showMethodResult(`some: products over $90 exist - ${hasExpensiveProduct}.`);
-  }
-
-  if (method === "every") {
-    const allInStock = products.every((product) => product.inStock);
-    showMethodResult(`every: all products are in stock - ${allInStock}.`);
-  }
-
-  if (method === "reduce") {
-    const totalPrice = products.reduce(
-      (sum, product) => sum + product.price,
-      0,
-    );
-    showMethodResult(`reduce: total price of all products is $${totalPrice}.`);
-  }
-
-  if (method === "slice") {
-    const firstFiveProducts = products.slice(0, 5);
-    renderProducts(firstFiveProducts);
-    showMethodResult("slice: first 5 products are shown.");
-  }
-
-  if (method === "reverse") {
-    const reversedProducts = products.slice().reverse();
-    renderProducts(reversedProducts);
-    showMethodResult("reverse: products are shown in reverse order.");
-  }
-
-  if (method === "includes") {
-    const categories = products.map((product) => product.category);
-    const hasWhitening = categories.includes("Whitening");
-    showMethodResult(`includes: category Whitening exists - ${hasWhitening}.`);
+  if (button.dataset.action === "cart") {
+    addToCart(productId).catch(() => {
+      alert("Could not add product to cart.");
+    });
   }
 }
 
-fillCategoryFilter();
-renderProducts(products);
+function showLoadingError() {
+  productsContainer.innerHTML =
+    '<p class="catalog-empty">Server is not available.</p>';
+}
 
-searchInput.addEventListener("input", updateCatalog);
-categoryFilter.addEventListener("change", updateCatalog);
-sortSelect.addEventListener("change", updateCatalog);
+searchInput.addEventListener("input", resetPageAndLoad);
+categoryFilter.addEventListener("change", resetPageAndLoad);
+sortSelect.addEventListener("change", resetPageAndLoad);
+stockFilter.addEventListener("change", resetPageAndLoad);
+popularFilter.addEventListener("change", resetPageAndLoad);
+minPriceInput.addEventListener("input", resetPageAndLoad);
+maxPriceInput.addEventListener("input", resetPageAndLoad);
+productsContainer.addEventListener("click", handleProductsClick);
 
-methodButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    handleMethodButton(button.dataset.method);
-  });
+prevPageButton.addEventListener("click", () => {
+  if (currentPage > 1) {
+    currentPage -= 1;
+    loadProducts().catch(showLoadingError);
+  }
 });
+
+nextPageButton.addEventListener("click", () => {
+  currentPage += 1;
+  loadProducts().catch(showLoadingError);
+});
+
+loadCategories().then(loadProducts).catch(showLoadingError);

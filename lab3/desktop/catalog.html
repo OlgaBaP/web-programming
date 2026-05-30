@@ -41,13 +41,15 @@
 
         <nav class="catalog-nav" aria-label="Main navigation">
           <a href="index.html" class="catalog-nav__link">Home</a>
-          <a href="catalog.html" class="catalog-nav__link">Products</a>
+          <a href="catalog.html" class="catalog-nav__link">Catalog</a>
+          <a href="favorites.html" class="catalog-nav__link">Favorites</a>
+          <a href="cart.html" class="catalog-nav__link">Cart</a>
           <a href="index.html" class="catalog-nav__link">Our Story</a>
           <a href="index.html" class="catalog-nav__link">Reviews</a>
           <a href="index.html" class="catalog-nav__link">Virtual Mirror</a>
         </nav>
 
-        <a href="#" class="catalog-header__cart" aria-label="Cart">
+        <a href="cart.html" class="catalog-header__cart" aria-label="Cart">
           <img src="../assets/images/cart-icon.png" alt="" />
         </a>
       </header>
@@ -88,32 +90,58 @@
               <option value="rating">Rating</option>
             </select>
           </label>
-        </section>
 
-        <section class="array-methods" aria-label="Array methods">
-          <h2 class="array-methods__title">Array methods</h2>
+          <label class="catalog-field">
+            <span>Stock</span>
+            <select id="stockFilter">
+              <option value="all">All</option>
+              <option value="true">In stock</option>
+              <option value="false">Out of stock</option>
+            </select>
+          </label>
 
-          <div class="array-methods__buttons">
-            <button type="button" data-method="map">map</button>
-            <button type="button" data-method="filter">filter</button>
-            <button type="button" data-method="sort">sort</button>
-            <button type="button" data-method="find">find</button>
-            <button type="button" data-method="some">some</button>
-            <button type="button" data-method="every">every</button>
-            <button type="button" data-method="reduce">reduce</button>
-            <button type="button" data-method="slice">slice</button>
-            <button type="button" data-method="reverse">reverse</button>
-            <button type="button" data-method="includes">includes</button>
-          </div>
+          <label class="catalog-field">
+            <span>Popularity</span>
+            <select id="popularFilter">
+              <option value="all">All</option>
+              <option value="true">Popular only</option>
+            </select>
+          </label>
 
-          <p class="array-methods__result" id="methodResult">
-            Press a method button to see the result.
-          </p>
+          <label class="catalog-field">
+            <span>Min price</span>
+            <input type="number" id="minPriceInput" min="0" placeholder="0" />
+          </label>
+
+          <label class="catalog-field">
+            <span>Max price</span>
+            <input type="number" id="maxPriceInput" min="0" placeholder="100" />
+          </label>
         </section>
 
         <section class="catalog-list" aria-label="Product catalog">
           <div class="catalog__grid" id="productsContainer"></div>
         </section>
+
+        <div class="catalog-pagination" aria-label="Catalog pagination">
+          <button
+            class="catalog-pagination__button"
+            type="button"
+            id="prevPage"
+          >
+            Previous
+          </button>
+          <span class="catalog-pagination__current" id="pageNumber"
+            >Page 1</span
+          >
+          <button
+            class="catalog-pagination__button"
+            type="button"
+            id="nextPage"
+          >
+            Next
+          </button>
+        </div>
       </main>
 
       <footer class="site-footer">
