@@ -1,0 +1,17 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "Complete LED Whitening Kit",
+      "description": "A full whitening kit with LED light, gel and trays for a bright smile at home.",
+      "category": "Whitening Kits",
+      "price": 80,
+      "rating": 4.9,
+      "image": "../assets/product/product-kit.png",
+      "isPopular": true,
+      "inStock": true
+    }
+  ],
+  "favorites": [],
+  "cart": []
+}
