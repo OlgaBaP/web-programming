@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Auraglow</title>
+    <link rel="icon" href="../assets/images/logo-icon.png" />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap"
       rel="stylesheet"
@@ -19,7 +20,9 @@
       href="../mobile/css/style.css"
       media="(max-width: 480px)"
     />
+    <link rel="stylesheet" href="css/catalog.css" />
     <script src="js/session.js" defer></script>
+    <script src="js/ui-effects.js" defer></script>
   </head>
 
   <body>
@@ -37,7 +40,7 @@
         <div class="hero-area">
           <header class="header">
             <div class="header__row">
-              <a href="#" class="header__logo" aria-label="Auraglow">
+              <a href="index.html" class="header__logo" aria-label="Auraglow">
                 <img
                   src="../assets/images/logo.png"
                   alt="Auraglow"
@@ -51,6 +54,8 @@
               </a>
 
               <nav class="nav">
+                <a href="#products" class="nav__link">Products</a>
+                <a href="#store" class="nav__link">Store</a>
                 <a href="catalog.html" class="nav__link">Catalog</a>
                 <a href="favorites.html" class="nav__link">Favorites</a>
                 <a href="cart.html" class="nav__link">Cart</a>
@@ -80,12 +85,68 @@
           <section class="hero">
             <div class="hero__content">
               <h1 class="hero__title">Oral care is self care.</h1>
-              <a href="#" class="hero__button">Find your glow</a>
+              <a href="#products" class="hero__button">Find your glow</a>
             </div>
           </section>
         </div>
 
-        <section class="about">
+        <section class="glow-slider" id="slider" data-slider>
+          <div class="glow-slider__header">
+            <p class="glow-slider__subtitle">Glow routine</p>
+            <h2 class="glow-slider__title">Simple care, brighter mood</h2>
+          </div>
+
+          <div class="glow-slider__stage">
+            <article class="glow-slider__slide is-active">
+              <img
+                src="../assets/product/product-kit.png"
+                alt="Complete LED Whitening Kit"
+              />
+              <div>
+                <h3>Complete LED Whitening Kit</h3>
+                <p>
+                  A calm at-home ritual for whitening sessions with a soft
+                  Auraglow finish.
+                </p>
+              </div>
+            </article>
+
+            <article class="glow-slider__slide">
+              <img src="../assets/product/product-gel.png" alt="Whitening Gel" />
+              <div>
+                <h3>Whitening Gel</h3>
+                <p>
+                  Fresh refills for the products you already use every week.
+                </p>
+              </div>
+            </article>
+
+            <article class="glow-slider__slide">
+              <img
+                src="../assets/product/product-starter-set.png"
+                alt="Starter Set"
+              />
+              <div>
+                <h3>Starter Set</h3>
+                <p>
+                  A clear first step for building a brighter daily smile
+                  routine.
+                </p>
+              </div>
+            </article>
+
+            <div class="glow-slider__controls">
+              <button class="glow-slider__button" type="button" data-slider-prev>
+                Previous
+              </button>
+              <button class="glow-slider__button" type="button" data-slider-next>
+                Next
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section class="about" id="about">
           <div class="about__content">
             <p class="about__subtitle">Hi, we’re Auraglow.</p>
             <h2 class="about__title">
@@ -97,7 +158,7 @@
         </section>
 
         <!-- Блок преимуществ -->
-        <section class="promises">
+        <section class="promises" id="promises">
           <h2 class="promises__title">Our promises to you</h2>
 
           <!-- Сетка карточек -->
@@ -169,7 +230,7 @@
         </section>
 
         <!-- Товары -->
-        <section class="products">
+        <section class="products" id="products">
           <div class="products__container">
             <p class="products__subtitle">Our Products</p>
             <h2 class="products__title">
@@ -226,6 +287,138 @@
           </div>
         </section>
 
+        <section class="auraglow-stats" aria-label="Auraglow statistics">
+          <div class="auraglow-stats__item">
+            <span
+              class="auraglow-stats__number"
+              data-stat-source="/products"
+              data-fallback="17"
+              >0</span
+            >
+            <p class="auraglow-stats__label">Catalog products</p>
+          </div>
+          <div class="auraglow-stats__item">
+            <span
+              class="auraglow-stats__number"
+              data-stat-source="/feedback"
+              data-fallback="6"
+              >0</span
+            >
+            <p class="auraglow-stats__label">Customer reviews</p>
+          </div>
+          <div class="auraglow-stats__item">
+            <span
+              class="auraglow-stats__number"
+              data-stat-source="/orders"
+              data-fallback="3"
+              >0</span
+            >
+            <p class="auraglow-stats__label">Completed orders</p>
+          </div>
+        </section>
+
+        <section class="auraglow-parallax" data-parallax>
+          <div
+            class="auraglow-parallax__layer auraglow-parallax__layer--back"
+            data-parallax-speed="18"
+          ></div>
+          <div
+            class="auraglow-parallax__layer auraglow-parallax__layer--middle"
+            data-parallax-speed="-34"
+          >
+            <img src="../assets/product/product-kit.png" alt="" />
+          </div>
+          <div
+            class="auraglow-parallax__layer auraglow-parallax__layer--front"
+            data-parallax-speed="58"
+          >
+            <img src="../assets/product/product-pen.png" alt="" />
+          </div>
+          <div class="auraglow-parallax__content">
+            <h2 class="auraglow-parallax__title">A glow that moves with you</h2>
+            <p class="auraglow-parallax__text">
+              Three soft layers drift at different speeds while the page scrolls.
+            </p>
+          </div>
+        </section>
+
+        <section class="media-gallery" id="gallery" data-media-gallery>
+          <div class="media-gallery__header">
+            <p class="media-gallery__subtitle">Interactive gallery</p>
+            <h2 class="media-gallery__title">Tap a mood, hear a glow</h2>
+          </div>
+
+          <div class="media-gallery__body">
+            <div class="media-gallery__viewer">
+              <img
+                src="../assets/product/product-kit.png"
+                alt="LED Kit"
+                data-gallery-image
+              />
+              <button
+                class="media-gallery__button media-gallery__video-button"
+                type="button"
+                data-video-open
+                hidden
+              >
+                Play video
+              </button>
+            </div>
+
+            <div class="media-gallery__panel">
+              <h3 class="media-gallery__current" data-gallery-title>LED Kit</h3>
+              <p class="media-gallery__status">
+                Sound: <span data-audio-status>Paused</span>
+              </p>
+              <button
+                class="media-gallery__button"
+                type="button"
+                data-gallery-random
+              >
+                Fresh image
+              </button>
+              <button
+                class="media-gallery__button"
+                type="button"
+                data-gallery-random
+              >
+                Surprise tone
+              </button>
+              <label class="media-gallery__volume">
+                <span>Volume</span>
+                <input
+                  type="range"
+                  min="0"
+                  max="0.8"
+                  step="0.05"
+                  value="0.35"
+                  data-volume
+                />
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <section class="ui-modal" id="videoModal" aria-hidden="true">
+          <div class="ui-modal__dialog" role="dialog" aria-modal="true">
+            <button
+              class="ui-modal__close"
+              type="button"
+              data-modal-close
+              aria-label="Close video"
+            >
+              x
+            </button>
+            <iframe
+              class="video-frame"
+              src="https://www.youtube.com/embed/ysz5S6PUM-U"
+              title="Auraglow video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </section>
+
         <div class="testimonial">
           <div class="testimonial__content">
             <img
@@ -243,7 +436,7 @@
           </div>
         </div>
 
-        <section class="reviews">
+        <section class="reviews" id="reviews">
           <div class="reviews__content">
             <p class="reviews__subtitle">Customer Reviews</p>
 
@@ -298,6 +491,20 @@
               </p>
               <a class="proof__button" href="#">Our guarantee</a>
             </div>
+          </div>
+        </section>
+
+        <section class="store-map" id="store">
+          <div class="store-map__header">
+            <p class="store-map__subtitle">Visit our store</p>
+            <h2 class="store-map__title">Auraglow office near a dentistry in Mogilev</h2>
+          </div>
+          <div class="store-map__frame">
+            <iframe
+              src="https://yandex.ru/map-widget/v1/?ll=30.331359%2C53.894548&z=15&mode=search&text=%D1%81%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F%20%D0%9C%D0%BE%D0%B3%D0%B8%D0%BB%D0%B5%D0%B2"
+              title="Mogilev dentistry map"
+              loading="lazy"
+            ></iframe>
           </div>
         </section>
       </main>

@@ -7,6 +7,10 @@ const checkoutButton = document.getElementById("checkoutButton");
 
 let cartItems = [];
 
+function showToast(message, type = "info") {
+  window.AuraglowUI?.showToast(message, type);
+}
+
 function calculateTotal(items) {
   return items.reduce(
     (sum, product) => sum + Number(product.price) * Number(product.quantity),
@@ -60,6 +64,7 @@ function renderCart(items) {
   });
 
   cartTotal.textContent = `Total: $${calculateTotal(items)}`;
+  window.AuraglowUI?.refreshReveal();
 }
 
 async function loadCart() {
@@ -89,7 +94,7 @@ async function updateQuantity(id, quantity) {
     }),
   });
 
-  loadCart();
+  loadCart().then(() => window.AuraglowUI?.updateCounters());
 }
 
 async function removeFromCart(id) {
@@ -97,7 +102,8 @@ async function removeFromCart(id) {
     method: "DELETE",
   });
 
-  loadCart();
+  showToast("Product removed from cart.", "success");
+  loadCart().then(() => window.AuraglowUI?.updateCounters());
 }
 
 async function checkout() {
@@ -147,7 +153,8 @@ async function checkout() {
   cartItems = [];
   renderCart(cartItems);
   cartMessage.textContent = "Purchase completed successfully.";
-  alert("Purchase completed successfully.");
+  showToast("Purchase completed successfully.", "success");
+  window.AuraglowUI?.updateCounters();
 }
 
 cartContainer.addEventListener("click", (event) => {
@@ -181,6 +188,7 @@ checkoutButton.addEventListener("click", () => {
   checkout().catch(() => {
     cartMessage.textContent = "Could not complete purchase. Try again later.";
     checkoutButton.disabled = cartItems.length === 0;
+    showToast("Could not complete purchase. Try again later.", "error");
   });
 });
 

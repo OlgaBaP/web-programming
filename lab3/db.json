@@ -166,8 +166,45 @@
       "inStock": true
     }
   ],
-  "favorites": [],
-  "cart": [],
+  "favorites": [
+    {
+      "id": "5",
+      "title": "Daily Toothpaste",
+      "description": "Fresh daily toothpaste that supports a clean smile and gentle stain care.",
+      "category": "Toothpaste",
+      "price": 14,
+      "rating": 4.4,
+      "image": "../assets/product/product-toothpaste.png",
+      "isPopular": false,
+      "inStock": true
+    }
+  ],
+  "cart": [
+    {
+      "id": "1",
+      "title": "Complete LED Whitening Kit",
+      "description": "A full whitening kit with LED light, gel and trays for a bright smile at home.",
+      "category": "Whitening Kits",
+      "price": 80,
+      "rating": 4.9,
+      "image": "../assets/product/product-kit.png",
+      "isPopular": true,
+      "inStock": true,
+      "quantity": 1
+    },
+    {
+      "id": "4",
+      "title": "Whitening Pen",
+      "description": "A small brush pen for quick whitening touch-ups at home or while traveling.",
+      "category": "Whitening",
+      "price": 24,
+      "rating": 4.5,
+      "image": "../assets/product/product-pen.png",
+      "isPopular": true,
+      "inStock": true,
+      "quantity": 1
+    }
+  ],
   "users": [
     {
       "id": "u-admin-1",
@@ -232,6 +269,31 @@
       "total": 108,
       "purchasedAt": "2026-06-02T13:59:58.229Z",
       "id": 1
+    },
+    {
+      "userId": null,
+      "userNickname": "guest",
+      "items": [
+        {
+          "productId": "1",
+          "title": "Complete LED Whitening Kit",
+          "price": 80,
+          "quantity": 1,
+          "subtotal": 80,
+          "image": "../assets/product/product-kit.png"
+        },
+        {
+          "productId": "4",
+          "title": "Whitening Pen",
+          "price": 24,
+          "quantity": 1,
+          "subtotal": 24,
+          "image": "../assets/product/product-pen.png"
+        }
+      ],
+      "total": 104,
+      "purchasedAt": "2026-06-02T15:50:55.819Z",
+      "id": 2
     }
   ]
 }

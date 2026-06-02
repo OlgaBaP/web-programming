@@ -2,6 +2,10 @@ const API_URL = "http://localhost:3001";
 
 const favoritesContainer = document.getElementById("favoritesContainer");
 
+function showToast(message, type = "info") {
+  window.AuraglowUI?.showToast(message, type);
+}
+
 function renderFavorites(products) {
   favoritesContainer.innerHTML = "";
 
@@ -38,6 +42,8 @@ function renderFavorites(products) {
 
     favoritesContainer.append(card);
   });
+
+  window.AuraglowUI?.refreshReveal();
 }
 
 async function loadFavorites() {
@@ -56,14 +62,17 @@ async function removeFavorite(id) {
     method: "DELETE",
   });
 
-  loadFavorites();
+  showToast("Product removed from favorites.", "success");
+  loadFavorites().then(() => window.AuraglowUI?.updateCounters());
 }
 
 favoritesContainer.addEventListener("click", (event) => {
   const button = event.target.closest("[data-id]");
 
   if (button) {
-    removeFavorite(button.dataset.id);
+    removeFavorite(button.dataset.id).catch(() => {
+      showToast("Could not remove product from favorites.", "error");
+    });
   }
 });
 

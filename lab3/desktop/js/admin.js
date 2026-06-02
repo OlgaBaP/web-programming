@@ -25,6 +25,10 @@ let products = [];
 let users = [];
 let reviews = [];
 
+function showToast(message, type = "info") {
+  window.AuraglowUI?.showToast(message, type);
+}
+
 function isAdministrator() {
   return window.AuraglowSession?.getCurrentUser()?.role === "administrator";
 }
@@ -228,6 +232,8 @@ function renderReviews() {
       `;
       adminReviewList.append(card);
     });
+
+  window.AuraglowUI?.refreshReveal();
 }
 
 function toggleAddButton() {
@@ -268,6 +274,9 @@ async function handleAddProduct(event) {
   document.getElementById("addInStock").checked = true;
   addProductButton.disabled = true;
   addProductMessage.textContent = "Product added successfully.";
+  showToast("Product added by administrator.", "success");
+  window.AuraglowUI?.closeModal(addProductForm.closest(".ui-modal"));
+  window.AuraglowUI?.updateCounters();
 }
 
 async function handleEditProduct(event) {
@@ -299,6 +308,9 @@ async function handleEditProduct(event) {
   editProductSelect.value = updatedProduct.id;
   editProductButton.disabled = true;
   editProductMessage.textContent = "Product updated successfully.";
+  showToast("Product updated by administrator.", "success");
+  window.AuraglowUI?.closeModal(editProductForm.closest(".ui-modal"));
+  window.AuraglowUI?.updateCounters();
 }
 
 async function handleDeleteProduct(event) {
@@ -321,6 +333,9 @@ async function handleDeleteProduct(event) {
   fillProductForm("edit", null);
   deleteProductButton.disabled = true;
   deleteProductMessage.textContent = "Product deleted successfully.";
+  showToast("Product deleted by administrator.", "success");
+  window.AuraglowUI?.closeModal(deleteProductForm.closest(".ui-modal"));
+  window.AuraglowUI?.updateCounters();
 }
 
 async function handleDeleteReview(event) {
@@ -337,6 +352,7 @@ async function handleDeleteReview(event) {
     (review) => String(review.id) !== String(button.dataset.reviewId),
   );
   renderReviews();
+  showToast("Review deleted.", "success");
 }
 
 function attachProductValidation(prefix, callback) {
@@ -344,6 +360,52 @@ function attachProductValidation(prefix, callback) {
     field.addEventListener("input", callback);
     field.addEventListener("change", callback);
   });
+}
+
+function setupAdminModals() {
+  if (document.querySelector(".admin-modal-actions")) {
+    return;
+  }
+
+  const actions = document.createElement("section");
+  actions.className = "admin-modal-actions";
+  actions.setAttribute("aria-label", "Admin product actions");
+  actions.innerHTML = `
+    <button class="catalog-card__button" type="button" data-modal-target="#addProductFormModal">
+      Add product
+    </button>
+    <button class="catalog-card__button" type="button" data-modal-target="#editProductFormModal">
+      Edit product
+    </button>
+    <button class="catalog-card__button" type="button" data-modal-target="#deleteProductFormModal">
+      Delete product
+    </button>
+  `;
+  adminContent.prepend(actions);
+
+  moveFormToModal(addProductForm, "addProductFormModal");
+  moveFormToModal(editProductForm, "editProductFormModal");
+  moveFormToModal(deleteProductForm, "deleteProductFormModal");
+}
+
+function moveFormToModal(form, modalId) {
+  const oldParent = form.parentElement;
+  const modal = document.createElement("section");
+  modal.className = "ui-modal";
+  modal.id = modalId;
+  modal.setAttribute("aria-hidden", "true");
+  modal.innerHTML = `
+    <div class="ui-modal__dialog ui-modal__dialog--form" role="dialog" aria-modal="true">
+      <button class="ui-modal__close" type="button" data-modal-close aria-label="Close">x</button>
+    </div>
+  `;
+
+  modal.querySelector(".ui-modal__dialog").append(form);
+  adminContent.append(modal);
+
+  if (oldParent && oldParent.children.length === 0) {
+    oldParent.hidden = true;
+  }
 }
 
 function initAdmin() {
@@ -358,6 +420,7 @@ function initAdmin() {
     '<p class="auth-status__text">Administrator access confirmed.</p>';
   adminContent.hidden = false;
 
+  setupAdminModals();
   attachProductValidation("add", toggleAddButton);
   attachProductValidation("edit", toggleEditButton);
 
@@ -379,6 +442,7 @@ function initAdmin() {
     handleDeleteReview(event).catch(() => {
       adminReviewList.innerHTML =
         '<p class="catalog-empty catalog-empty--compact">Could not delete review.</p>';
+      showToast("Could not delete review.", "error");
     });
   });
 

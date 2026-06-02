@@ -15,6 +15,10 @@ const pageNumber = document.getElementById("pageNumber");
 
 let currentPage = 1;
 
+function showToast(message, type = "info") {
+  window.AuraglowUI?.showToast(message, type);
+}
+
 function renderProducts(products) {
   productsContainer.innerHTML = "";
 
@@ -27,6 +31,7 @@ function renderProducts(products) {
   products.forEach((product) => {
     const card = document.createElement("article");
     card.className = "catalog-card";
+    card.dataset.productId = product.id;
 
     card.innerHTML = `
       <div class="catalog-card__image-box">
@@ -56,6 +61,8 @@ function renderProducts(products) {
 
     productsContainer.append(card);
   });
+
+  window.AuraglowUI?.refreshReveal();
 }
 
 function getCatalogParams() {
@@ -173,7 +180,7 @@ async function addToFavorites(productId) {
   const favorites = await favoriteResponse.json();
 
   if (favorites.length > 0) {
-    alert("This product is already in favorites.");
+    showToast("This product is already in favorites.", "info");
     return;
   }
 
@@ -185,7 +192,8 @@ async function addToFavorites(productId) {
     body: JSON.stringify(product),
   });
 
-  alert("Product added to favorites.");
+  showToast("Product added to favorites.", "success");
+  window.AuraglowUI?.updateCounters();
 }
 
 async function addToCart(productId) {
@@ -218,28 +226,37 @@ async function addToCart(productId) {
     });
   }
 
-  alert("Product added to cart.");
+  showToast("Product added to cart.", "success");
+  window.AuraglowUI?.updateCounters();
 }
 
 function handleProductsClick(event) {
   const button = event.target.closest("[data-action]");
 
-  if (!button) {
+  if (button) {
+    const productId = button.dataset.id;
+
+    if (button.dataset.action === "favorite") {
+      addToFavorites(productId).catch(() => {
+        showToast("Could not add product to favorites.", "error");
+      });
+    }
+
+    if (button.dataset.action === "cart") {
+      addToCart(productId).catch(() => {
+        showToast("Could not add product to cart.", "error");
+      });
+    }
+
     return;
   }
 
-  const productId = button.dataset.id;
+  const card = event.target.closest(".catalog-card[data-product-id]");
 
-  if (button.dataset.action === "favorite") {
-    addToFavorites(productId).catch(() => {
-      alert("Could not add product to favorites.");
-    });
-  }
-
-  if (button.dataset.action === "cart") {
-    addToCart(productId).catch(() => {
-      alert("Could not add product to cart.");
-    });
+  if (card) {
+    getProductById(card.dataset.productId)
+      .then((product) => window.AuraglowUI?.openProductModal(product))
+      .catch(() => showToast("Could not open product details.", "error"));
   }
 }
 
