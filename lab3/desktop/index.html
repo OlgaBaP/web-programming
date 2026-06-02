@@ -19,6 +19,7 @@
       href="../mobile/css/style.css"
       media="(max-width: 480px)"
     />
+    <script src="js/session.js" defer></script>
   </head>
 
   <body>
@@ -50,13 +51,27 @@
               </a>
 
               <nav class="nav">
-                <a href="catalog.html" class="nav__link">Products</a>
-                <a href="#" class="nav__link">Our Story</a>
-                <a href="#" class="nav__link">Reviews</a>
-                <a href="#" class="nav__link">Virtual Mirror</a>
+                <a href="catalog.html" class="nav__link">Catalog</a>
+                <a href="favorites.html" class="nav__link">Favorites</a>
+                <a href="cart.html" class="nav__link">Cart</a>
+                <a href="auth.html" class="nav__link" data-auth-link
+                  >Auth / Login</a
+                >
+                <a href="feedback.html" class="nav__link">Feedback</a>
+                <a href="admin.html" class="nav__link" data-admin-link hidden
+                  >Admin</a
+                >
+                <button
+                  class="nav__link nav__button"
+                  type="button"
+                  data-logout-button
+                  hidden
+                >
+                  Logout
+                </button>
               </nav>
 
-              <a href="#" class="cart">
+              <a href="cart.html" class="cart">
                 <img src="../assets/images/cart-icon.png" alt="Cart" />
               </a>
             </div>

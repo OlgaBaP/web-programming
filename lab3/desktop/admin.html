@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Auraglow Admin</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/catalog.css" />
+    <script src="js/session.js" defer></script>
+    <script src="js/admin.js" defer></script>
+  </head>
+
+  <body>
+    <div class="catalog-page">
+      <div class="catalog-top">
+        <p class="catalog-top__text">
+          New look, new products. Available exclusively at Auraglow.com
+        </p>
+      </div>
+
+      <header class="catalog-header">
+        <a
+          href="index.html"
+          class="catalog-header__logo"
+          aria-label="Auraglow home"
+        >
+          <img
+            src="../assets/images/logo.png"
+            alt="Auraglow"
+            class="catalog-header__logo-text"
+          />
+          <img
+            src="../assets/images/logo-icon.png"
+            alt=""
+            class="catalog-header__logo-icon"
+          />
+        </a>
+
+        <nav class="catalog-nav" aria-label="Main navigation">
+          <a href="index.html" class="catalog-nav__link">Home</a>
+          <a href="catalog.html" class="catalog-nav__link">Catalog</a>
+          <a href="favorites.html" class="catalog-nav__link">Favorites</a>
+          <a href="cart.html" class="catalog-nav__link">Cart</a>
+          <a href="auth.html" class="catalog-nav__link" data-auth-link
+            >Auth / Login</a
+          >
+          <a href="feedback.html" class="catalog-nav__link">Feedback</a>
+          <a href="admin.html" class="catalog-nav__link" data-admin-link hidden
+            >Admin</a
+          >
+          <button
+            class="catalog-nav__link catalog-nav__button"
+            type="button"
+            data-logout-button
+            hidden
+          >
+            Logout
+          </button>
+        </nav>
+
+        <a href="cart.html" class="catalog-header__cart" aria-label="Cart">
+          <img src="../assets/images/cart-icon.png" alt="" />
+        </a>
+      </header>
+
+      <main class="catalog-main">
+        <section class="catalog-hero">
+          <p class="catalog-hero__subtitle">Auraglow Admin</p>
+          <h1 class="catalog-hero__title">Product and review management</h1>
+          <p class="catalog-hero__text">
+            Manage catalog products and moderate customer feedback.
+          </p>
+        </section>
+
+        <section
+          class="auth-status"
+          id="adminAccessMessage"
+          aria-live="polite"
+        ></section>
+
+        <div id="adminContent" hidden>
+          <section class="forms-layout" aria-label="Product management">
+            <form class="form-panel" id="addProductForm" novalidate>
+              <div class="form-panel__header">
+                <p class="catalog-hero__subtitle">Products</p>
+                <h2 class="form-panel__title">Add product</h2>
+              </div>
+
+              <div class="form-grid">
+                <label class="form-field form-field--required">
+                  <span>Title</span>
+                  <input id="addTitle" type="text" />
+                  <small class="form-error" data-error-for="addTitle"></small>
+                </label>
+                <label class="form-field form-field--required">
+                  <span>Category</span>
+                  <input id="addCategory" type="text" />
+                  <small
+                    class="form-error"
+                    data-error-for="addCategory"
+                  ></small>
+                </label>
+                <label class="form-field form-field--required">
+                  <span>Price</span>
+                  <input id="addPrice" type="number" min="1" step="1" />
+                  <small class="form-error" data-error-for="addPrice"></small>
+                </label>
+                <label class="form-field form-field--required">
+                  <span>Rating</span>
+                  <input
+                    id="addRating"
+                    type="number"
+                    min="0"
+                    max="5"
+                    step="0.1"
+                  />
+                  <small class="form-error" data-error-for="addRating"></small>
+                </label>
+              </div>
+
+              <label class="form-field form-field--required">
+                <span>Image path</span>
+                <input
+                  id="addImage"
+                  type="text"
+                  placeholder="../assets/product/product-kit.png"
+                />
+                <small class="form-error" data-error-for="addImage"></small>
+              </label>
+
+              <label class="form-field form-field--required">
+                <span>Description</span>
+                <textarea id="addDescription" rows="4"></textarea>
+                <small
+                  class="form-error"
+                  data-error-for="addDescription"
+                ></small>
+              </label>
+
+              <div class="inline-options">
+                <label
+                  ><input id="addInStock" type="checkbox" checked /> In
+                  stock</label
+                >
+                <label
+                  ><input id="addIsPopular" type="checkbox" /> Popular</label
+                >
+              </div>
+
+              <button
+                class="catalog-card__button form-submit"
+                id="addProductButton"
+                type="submit"
+                disabled
+              >
+                Add product
+              </button>
+              <p
+                class="form-message"
+                id="addProductMessage"
+                aria-live="polite"
+              ></p>
+            </form>
+
+            <form class="form-panel" id="editProductForm" novalidate>
+              <div class="form-panel__header">
+                <p class="catalog-hero__subtitle">Products</p>
+                <h2 class="form-panel__title">Edit product</h2>
+              </div>
+
+              <label class="form-field form-field--required">
+                <span>Product</span>
+                <select id="editProductSelect">
+                  <option value="">Choose product</option>
+                </select>
+                <small
+                  class="form-error"
+                  data-error-for="editProductSelect"
+                ></small>
+              </label>
+
+              <div class="form-grid">
+                <label class="form-field form-field--required">
+                  <span>Title</span>
+                  <input id="editTitle" type="text" />
+                  <small class="form-error" data-error-for="editTitle"></small>
+                </label>
+                <label class="form-field form-field--required">
+                  <span>Category</span>
+                  <input id="editCategory" type="text" />
+                  <small
+                    class="form-error"
+                    data-error-for="editCategory"
+                  ></small>
+                </label>
+                <label class="form-field form-field--required">
+                  <span>Price</span>
+                  <input id="editPrice" type="number" min="1" step="1" />
+                  <small class="form-error" data-error-for="editPrice"></small>
+                </label>
+                <label class="form-field form-field--required">
+                  <span>Rating</span>
+                  <input
+                    id="editRating"
+                    type="number"
+                    min="0"
+                    max="5"
+                    step="0.1"
+                  />
+                  <small class="form-error" data-error-for="editRating"></small>
+                </label>
+              </div>
+
+              <label class="form-field form-field--required">
+                <span>Image path</span>
+                <input id="editImage" type="text" />
+                <small class="form-error" data-error-for="editImage"></small>
+              </label>
+
+              <label class="form-field form-field--required">
+                <span>Description</span>
+                <textarea id="editDescription" rows="4"></textarea>
+                <small
+                  class="form-error"
+                  data-error-for="editDescription"
+                ></small>
+              </label>
+
+              <div class="inline-options">
+                <label
+                  ><input id="editInStock" type="checkbox" /> In stock</label
+                >
+                <label
+                  ><input id="editIsPopular" type="checkbox" /> Popular</label
+                >
+              </div>
+
+              <button
+                class="catalog-card__button form-submit"
+                id="editProductButton"
+                type="submit"
+                disabled
+              >
+                Save product
+              </button>
+              <p
+                class="form-message"
+                id="editProductMessage"
+                aria-live="polite"
+              ></p>
+            </form>
+          </section>
+
+          <section class="forms-layout forms-layout--single">
+            <form class="form-panel" id="deleteProductForm" novalidate>
+              <div class="form-panel__header">
+                <p class="catalog-hero__subtitle">Products</p>
+                <h2 class="form-panel__title">Delete product</h2>
+              </div>
+
+              <label class="form-field form-field--required">
+                <span>Product</span>
+                <select id="deleteProductSelect">
+                  <option value="">Choose product</option>
+                </select>
+                <small
+                  class="form-error"
+                  data-error-for="deleteProductSelect"
+                ></small>
+              </label>
+
+              <button
+                class="catalog-card__button form-submit"
+                id="deleteProductButton"
+                type="submit"
+                disabled
+              >
+                Delete product
+              </button>
+              <p
+                class="form-message"
+                id="deleteProductMessage"
+                aria-live="polite"
+              ></p>
+            </form>
+
+            <section class="form-panel" aria-label="Review moderation">
+              <div class="form-panel__header">
+                <p class="catalog-hero__subtitle">Feedback</p>
+                <h2 class="form-panel__title">Moderate reviews</h2>
+              </div>
+
+              <div class="form-grid">
+                <label class="form-field">
+                  <span>By product</span>
+                  <select id="reviewProductFilter">
+                    <option value="">All products</option>
+                  </select>
+                </label>
+                <label class="form-field">
+                  <span>By user</span>
+                  <select id="reviewUserFilter">
+                    <option value="">All users</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="review-list" id="adminReviewList"></div>
+            </section>
+          </section>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

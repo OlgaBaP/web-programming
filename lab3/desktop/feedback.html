@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Auraglow Favorites</title>
+    <title>Auraglow Feedback</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap"
       rel="stylesheet"
@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/catalog.css" />
     <script src="js/session.js" defer></script>
-    <script src="js/favorites.js" defer></script>
+    <script src="js/feedback.js" defer></script>
   </head>
 
   <body>
@@ -69,15 +69,59 @@
 
       <main class="catalog-main">
         <section class="catalog-hero">
-          <p class="catalog-hero__subtitle">Auraglow Favorites</p>
-          <h1 class="catalog-hero__title">Your favorite products</h1>
+          <p class="catalog-hero__subtitle">Auraglow Feedback</p>
+          <h1 class="catalog-hero__title">Share a product review</h1>
           <p class="catalog-hero__text">
-            Save products you like and return to them later.
+            Reviews are available for signed-in customers after a completed
+            purchase.
           </p>
         </section>
 
-        <section class="catalog-list" aria-label="Favorite products">
-          <div class="catalog__grid" id="favoritesContainer"></div>
+        <section class="forms-layout forms-layout--single">
+          <form class="form-panel" id="feedbackForm" novalidate>
+            <div class="form-panel__header">
+              <p class="catalog-hero__subtitle">Customer review</p>
+              <h2 class="form-panel__title">Leave feedback</h2>
+            </div>
+
+            <p class="form-message" id="feedbackStatus" aria-live="polite"></p>
+
+            <label class="form-field form-field--required">
+              <span>Product</span>
+              <select id="productSelect">
+                <option value="">Choose product</option>
+              </select>
+              <small class="form-error" data-error-for="productSelect"></small>
+            </label>
+
+            <label class="form-field form-field--required">
+              <span>Review text</span>
+              <textarea
+                id="feedbackText"
+                rows="7"
+                placeholder="Tell us how the product worked for your smile"
+              ></textarea>
+              <small class="form-error" data-error-for="feedbackText"></small>
+            </label>
+
+            <button
+              class="catalog-card__button form-submit"
+              id="feedbackButton"
+              type="submit"
+              disabled
+            >
+              Send review
+            </button>
+            <p class="form-message" id="feedbackMessage" aria-live="polite"></p>
+          </form>
+
+          <section class="form-panel" aria-label="Recent feedback">
+            <div class="form-panel__header">
+              <p class="catalog-hero__subtitle">Recent reviews</p>
+              <h2 class="form-panel__title">Feedback list</h2>
+            </div>
+            <div class="review-list" id="feedbackList"></div>
+          </section>
         </section>
       </main>
     </div>

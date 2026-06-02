@@ -10,6 +10,7 @@
     />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/catalog.css" />
+    <script src="js/session.js" defer></script>
     <script src="js/catalog.js" defer></script>
   </head>
 
@@ -44,9 +45,21 @@
           <a href="catalog.html" class="catalog-nav__link">Catalog</a>
           <a href="favorites.html" class="catalog-nav__link">Favorites</a>
           <a href="cart.html" class="catalog-nav__link">Cart</a>
-          <a href="index.html" class="catalog-nav__link">Our Story</a>
-          <a href="index.html" class="catalog-nav__link">Reviews</a>
-          <a href="index.html" class="catalog-nav__link">Virtual Mirror</a>
+          <a href="auth.html" class="catalog-nav__link" data-auth-link
+            >Auth / Login</a
+          >
+          <a href="feedback.html" class="catalog-nav__link">Feedback</a>
+          <a href="admin.html" class="catalog-nav__link" data-admin-link hidden
+            >Admin</a
+          >
+          <button
+            class="catalog-nav__link catalog-nav__button"
+            type="button"
+            data-logout-button
+            hidden
+          >
+            Logout
+          </button>
         </nav>
 
         <a href="cart.html" class="catalog-header__cart" aria-label="Cart">

@@ -7,6 +7,13 @@ const checkoutButton = document.getElementById("checkoutButton");
 
 let cartItems = [];
 
+function calculateTotal(items) {
+  return items.reduce(
+    (sum, product) => sum + Number(product.price) * Number(product.quantity),
+    0,
+  );
+}
+
 function renderCart(items) {
   cartContainer.innerHTML = "";
 
@@ -52,12 +59,7 @@ function renderCart(items) {
     cartContainer.append(card);
   });
 
-  const total = items.reduce(
-    (sum, product) => sum + product.price * product.quantity,
-    0,
-  );
-
-  cartTotal.textContent = `Total: $${total}`;
+  cartTotal.textContent = `Total: $${calculateTotal(items)}`;
 }
 
 async function loadCart() {
@@ -99,6 +101,41 @@ async function removeFromCart(id) {
 }
 
 async function checkout() {
+  if (cartItems.length === 0) {
+    return;
+  }
+
+  checkoutButton.disabled = true;
+  cartMessage.textContent = "Processing your order...";
+
+  const currentUser = window.AuraglowSession?.getCurrentUser() || null;
+  const order = {
+    userId: currentUser?.id || null,
+    userNickname: currentUser?.nickname || "guest",
+    items: cartItems.map((product) => ({
+      productId: product.id,
+      title: product.title,
+      price: Number(product.price),
+      quantity: Number(product.quantity),
+      subtotal: Number(product.price) * Number(product.quantity),
+      image: product.image,
+    })),
+    total: calculateTotal(cartItems),
+    purchasedAt: new Date().toISOString(),
+  };
+
+  const orderResponse = await fetch(`${API_URL}/orders`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(order),
+  });
+
+  if (!orderResponse.ok) {
+    throw new Error("Order saving error");
+  }
+
   await Promise.all(
     cartItems.map((product) =>
       fetch(`${API_URL}/cart/${product.id}`, {
@@ -140,7 +177,12 @@ cartContainer.addEventListener("click", (event) => {
   }
 });
 
-checkoutButton.addEventListener("click", checkout);
+checkoutButton.addEventListener("click", () => {
+  checkout().catch(() => {
+    cartMessage.textContent = "Could not complete purchase. Try again later.";
+    checkoutButton.disabled = cartItems.length === 0;
+  });
+});
 
 loadCart().catch(() => {
   cartContainer.innerHTML =

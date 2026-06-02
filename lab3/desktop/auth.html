@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Auraglow Auth</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/catalog.css" />
+    <script src="js/session.js" defer></script>
+    <script src="js/auth.js" defer></script>
+  </head>
+
+  <body>
+    <div class="catalog-page">
+      <div class="catalog-top">
+        <p class="catalog-top__text">
+          New look, new products. Available exclusively at Auraglow.com
+        </p>
+      </div>
+
+      <header class="catalog-header">
+        <a
+          href="index.html"
+          class="catalog-header__logo"
+          aria-label="Auraglow home"
+        >
+          <img
+            src="../assets/images/logo.png"
+            alt="Auraglow"
+            class="catalog-header__logo-text"
+          />
+          <img
+            src="../assets/images/logo-icon.png"
+            alt=""
+            class="catalog-header__logo-icon"
+          />
+        </a>
+
+        <nav class="catalog-nav" aria-label="Main navigation">
+          <a href="index.html" class="catalog-nav__link">Home</a>
+          <a href="catalog.html" class="catalog-nav__link">Catalog</a>
+          <a href="favorites.html" class="catalog-nav__link">Favorites</a>
+          <a href="cart.html" class="catalog-nav__link">Cart</a>
+          <a href="auth.html" class="catalog-nav__link" data-auth-link
+            >Auth / Login</a
+          >
+          <a href="feedback.html" class="catalog-nav__link">Feedback</a>
+          <a href="admin.html" class="catalog-nav__link" data-admin-link hidden
+            >Admin</a
+          >
+          <button
+            class="catalog-nav__link catalog-nav__button"
+            type="button"
+            data-logout-button
+            hidden
+          >
+            Logout
+          </button>
+        </nav>
+
+        <a href="cart.html" class="catalog-header__cart" aria-label="Cart">
+          <img src="../assets/images/cart-icon.png" alt="" />
+        </a>
+      </header>
+
+      <main class="catalog-main">
+        <section class="catalog-hero">
+          <p class="catalog-hero__subtitle">Auraglow Account</p>
+          <h1 class="catalog-hero__title">Registration and login</h1>
+          <p class="catalog-hero__text">
+            Create an account, sign in and continue shopping with your role.
+          </p>
+        </section>
+
+        <section
+          class="auth-status"
+          id="authStatus"
+          aria-live="polite"
+        ></section>
+
+        <section class="forms-layout" aria-label="Authentication forms">
+          <form class="form-panel" id="registerForm" novalidate>
+            <div class="form-panel__header">
+              <p class="catalog-hero__subtitle">New customer</p>
+              <h2 class="form-panel__title">Register</h2>
+            </div>
+
+            <div class="form-grid">
+              <label class="form-field form-field--required">
+                <span>Phone</span>
+                <input
+                  id="registerPhone"
+                  type="tel"
+                  placeholder="+375291234567"
+                />
+                <small
+                  class="form-error"
+                  data-error-for="registerPhone"
+                ></small>
+              </label>
+
+              <label class="form-field form-field--required">
+                <span>Email</span>
+                <input
+                  id="registerEmail"
+                  type="email"
+                  placeholder="name@example.com"
+                />
+                <small
+                  class="form-error"
+                  data-error-for="registerEmail"
+                ></small>
+              </label>
+
+              <label class="form-field form-field--required">
+                <span>Birth date</span>
+                <input id="birthDate" type="date" />
+                <small class="form-error" data-error-for="birthDate"></small>
+              </label>
+
+              <label class="form-field form-field--required">
+                <span>Last name</span>
+                <input id="lastName" type="text" autocomplete="family-name" />
+                <small class="form-error" data-error-for="lastName"></small>
+              </label>
+
+              <label class="form-field form-field--required">
+                <span>First name</span>
+                <input id="firstName" type="text" autocomplete="given-name" />
+                <small class="form-error" data-error-for="firstName"></small>
+              </label>
+
+              <label class="form-field">
+                <span>Patronymic</span>
+                <input id="patronymic" type="text" />
+                <small class="form-error" data-error-for="patronymic"></small>
+              </label>
+            </div>
+
+            <fieldset class="choice-group">
+              <legend>Password mode</legend>
+              <label>
+                <input
+                  type="radio"
+                  name="passwordMode"
+                  value="manual"
+                  checked
+                />
+                Set manually
+              </label>
+              <label>
+                <input type="radio" name="passwordMode" value="auto" />
+                Generate automatically
+              </label>
+            </fieldset>
+
+            <div class="form-grid">
+              <label class="form-field form-field--required">
+                <span>Password</span>
+                <input
+                  id="registerPassword"
+                  type="password"
+                  autocomplete="new-password"
+                />
+                <small
+                  class="form-error"
+                  data-error-for="registerPassword"
+                ></small>
+              </label>
+
+              <label class="form-field form-field--required">
+                <span>Repeat password</span>
+                <input
+                  id="repeatPassword"
+                  type="password"
+                  autocomplete="new-password"
+                />
+                <small
+                  class="form-error"
+                  data-error-for="repeatPassword"
+                ></small>
+              </label>
+            </div>
+
+            <div class="nickname-row">
+              <label class="form-field form-field--required">
+                <span>Nickname</span>
+                <input id="nickname" type="text" readonly />
+                <small class="form-error" data-error-for="nickname"></small>
+              </label>
+              <button
+                class="catalog-card__button"
+                id="generateNickname"
+                type="button"
+              >
+                Generate nickname
+              </button>
+            </div>
+
+            <label class="agreement-field form-field--required">
+              <input id="agreement" type="checkbox" />
+              <span>I have read and accept the user agreement</span>
+            </label>
+            <small class="form-error" data-error-for="agreement"></small>
+
+            <button
+              class="catalog-card__button form-submit"
+              id="registerButton"
+              type="submit"
+              disabled
+            >
+              Register
+            </button>
+            <p class="form-message" id="registerMessage" aria-live="polite"></p>
+          </form>
+
+          <form class="form-panel" id="loginForm" novalidate>
+            <div class="form-panel__header">
+              <p class="catalog-hero__subtitle">Existing customer</p>
+              <h2 class="form-panel__title">Login</h2>
+            </div>
+
+            <label class="form-field form-field--required">
+              <span>Email or nickname</span>
+              <input id="loginIdentifier" type="text" autocomplete="username" />
+              <small
+                class="form-error"
+                data-error-for="loginIdentifier"
+              ></small>
+            </label>
+
+            <label class="form-field form-field--required">
+              <span>Password</span>
+              <input
+                id="loginPassword"
+                type="password"
+                autocomplete="current-password"
+              />
+              <small class="form-error" data-error-for="loginPassword"></small>
+            </label>
+
+            <button
+              class="catalog-card__button form-submit"
+              id="loginButton"
+              type="submit"
+            >
+              Login
+            </button>
+            <p class="form-message" id="loginMessage" aria-live="polite"></p>
+          </form>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
