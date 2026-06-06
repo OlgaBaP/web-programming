@@ -1,3 +1,4 @@
+//самовызывающаяся функция
 (function () {
   const SESSION_KEY = "auraglowCurrentUser";
 

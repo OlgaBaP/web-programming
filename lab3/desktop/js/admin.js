@@ -42,6 +42,9 @@ function setError(fieldId, message) {
   }
 }
 
+
+
+
 async function fetchJson(path, options) {
   const response = await fetch(`${API_URL}${path}`, options);
 
@@ -55,6 +58,8 @@ async function fetchJson(path, options) {
 
   return response.json();
 }
+
+
 
 function productFields(prefix) {
   return {
@@ -279,6 +284,10 @@ async function handleEditProduct(event) {
     return;
   }
 
+
+
+
+
   const productId = editProductSelect.value;
   const originalProduct = products.find(
     (item) => String(item.id) === String(productId),
@@ -292,6 +301,9 @@ async function handleEditProduct(event) {
     body: JSON.stringify(product),
   });
 
+
+
+  
   products = products.map((item) =>
     String(item.id) === String(productId) ? updatedProduct : item,
   );

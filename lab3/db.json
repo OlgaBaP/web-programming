@@ -166,8 +166,68 @@
       "inStock": true
     }
   ],
-  "favorites": [],
-  "cart": [],
+  "favorites": [
+    {
+      "id": "4",
+      "title": "Whitening Pen",
+      "description": "A small brush pen for quick whitening touch-ups at home or while traveling.",
+      "category": "Whitening",
+      "price": 24,
+      "rating": 4.5,
+      "image": "../assets/product/product-pen.png",
+      "isPopular": true,
+      "inStock": true
+    },
+    {
+      "id": "5",
+      "title": "Daily Toothpaste",
+      "description": "Fresh daily toothpaste that supports a clean smile and gentle stain care.",
+      "category": "Toothpaste",
+      "price": 14,
+      "rating": 4.4,
+      "image": "../assets/product/product-toothpaste.png",
+      "isPopular": false,
+      "inStock": true
+    }
+  ],
+  "cart": [
+    {
+      "id": "4",
+      "title": "Whitening Pen",
+      "description": "A small brush pen for quick whitening touch-ups at home or while traveling.",
+      "category": "Whitening",
+      "price": 24,
+      "rating": 4.5,
+      "image": "../assets/product/product-pen.png",
+      "isPopular": true,
+      "inStock": true,
+      "quantity": 1
+    },
+    {
+      "id": "1",
+      "title": "Complete LED Whitening Kit",
+      "description": "A full whitening kit with LED light, gel and trays for a bright smile at home.",
+      "category": "Whitening Kits",
+      "price": 80,
+      "rating": 4.9,
+      "image": "../assets/product/product-kit.png",
+      "isPopular": true,
+      "inStock": true,
+      "quantity": 1
+    },
+    {
+      "id": "5",
+      "title": "Daily Toothpaste",
+      "description": "Fresh daily toothpaste that supports a clean smile and gentle stain care.",
+      "category": "Toothpaste",
+      "price": 14,
+      "rating": 4.4,
+      "image": "../assets/product/product-toothpaste.png",
+      "isPopular": false,
+      "inStock": true,
+      "quantity": 1
+    }
+  ],
   "users": [
     {
       "id": "u-admin-1",
@@ -194,6 +254,32 @@
       "password": "4t23@i!zqzJ2",
       "role": "customer",
       "createdAt": "2026-06-02T13:58:54.599Z"
+    },
+    {
+      "id": "3b8d8c3c-7bb7-4e97-9742-e528d8e9748c",
+      "phone": "+375333700644",
+      "email": "olgap@gmail.com",
+      "birthDate": "2006-06-30",
+      "lastName": "Оля",
+      "firstName": "Батуро",
+      "patronymic": "",
+      "nickname": "baoly1254",
+      "password": "@7suTH#a3uWA",
+      "role": "customer",
+      "createdAt": "2026-06-04T20:24:12.760Z"
+    },
+    {
+      "id": "9a361331-06ef-4592-98dd-d5ad69495fd8",
+      "phone": "+375333700855",
+      "email": "olga85@gmail.com",
+      "birthDate": "2006-06-05",
+      "lastName": "Оля",
+      "firstName": "Батуро",
+      "patronymic": "",
+      "nickname": "baoly6548",
+      "password": "%aP8q*Q!y4AP",
+      "role": "customer",
+      "createdAt": "2026-06-05T07:57:50.080Z"
     }
   ],
   "feedback": [
@@ -205,6 +291,15 @@
       "text": "лучшая паста. всем советую",
       "createdAt": "2026-06-02T14:01:38.138Z",
       "id": 1
+    },
+    {
+      "productId": "1",
+      "productTitle": "Complete LED Whitening Kit",
+      "userId": "3b8d8c3c-7bb7-4e97-9742-e528d8e9748c",
+      "nickname": "baoly1254",
+      "text": "Это просто вау, буду заказывать еще у вас",
+      "createdAt": "2026-06-04T20:28:36.679Z",
+      "id": 2
     }
   ],
   "orders": [
@@ -232,6 +327,81 @@
       "total": 108,
       "purchasedAt": "2026-06-02T13:59:58.229Z",
       "id": 1
+    },
+    {
+      "userId": null,
+      "userNickname": "guest",
+      "items": [
+        {
+          "productId": "1",
+          "title": "Complete LED Whitening Kit",
+          "price": 80,
+          "quantity": 1,
+          "subtotal": 80,
+          "image": "../assets/product/product-kit.png"
+        },
+        {
+          "productId": "5",
+          "title": "Daily Toothpaste",
+          "price": 14,
+          "quantity": 1,
+          "subtotal": 14,
+          "image": "../assets/product/product-toothpaste.png"
+        }
+      ],
+      "total": 94,
+      "purchasedAt": "2026-06-04T20:24:54.953Z",
+      "id": 2
+    },
+    {
+      "userId": null,
+      "userNickname": "guest",
+      "items": [
+        {
+          "productId": "4",
+          "title": "Whitening Pen",
+          "price": 24,
+          "quantity": 1,
+          "subtotal": 24,
+          "image": "../assets/product/product-pen.png"
+        }
+      ],
+      "total": 24,
+      "purchasedAt": "2026-06-04T20:25:54.808Z",
+      "id": 3
+    },
+    {
+      "userId": "3b8d8c3c-7bb7-4e97-9742-e528d8e9748c",
+      "userNickname": "baoly1254",
+      "items": [
+        {
+          "productId": "1",
+          "title": "Complete LED Whitening Kit",
+          "price": 80,
+          "quantity": 1,
+          "subtotal": 80,
+          "image": "../assets/product/product-kit.png"
+        },
+        {
+          "productId": "2",
+          "title": "Custom Whitening Kit",
+          "price": 95,
+          "quantity": 1,
+          "subtotal": 95,
+          "image": "../assets/product/product-custom-kit.png"
+        },
+        {
+          "productId": "3",
+          "title": "Whitening Strips",
+          "price": 32,
+          "quantity": 1,
+          "subtotal": 32,
+          "image": "../assets/product/product-strips.png"
+        }
+      ],
+      "total": 207,
+      "purchasedAt": "2026-06-04T20:27:54.209Z",
+      "id": 4
     }
   ]
 }

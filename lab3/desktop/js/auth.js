@@ -127,6 +127,7 @@ function isEmailValid(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
+//Дата
 function isOlderThan16(dateValue) {
   const birthDate = new Date(dateValue);
 
@@ -165,6 +166,7 @@ function transliterate(value) {
     .replace(/[^a-z0-9]/g, "");
 }
 
+//никкнейм
 function buildNicknameCandidate() {
   const firstName = transliterate(fields.firstName.value);
   const lastName = transliterate(fields.lastName.value);
@@ -220,6 +222,8 @@ async function validateRegistration() {
     return false;
   }
 
+
+  
   const phone = fields.phone.value.trim();
   const email = fields.email.value.trim();
   const birthDate = fields.birthDate.value;
@@ -323,7 +327,7 @@ async function validateAndToggleButton() {
 async function generateNickname() {
   if (nicknameAttempts >= 5) {
     fields.nickname.readOnly = false;
-    setError("nickname", "Manual nickname input is now available.");
+    setError("nickname", "Manual nickname input is now available");
     return;
   }
 
@@ -347,13 +351,18 @@ async function generateNickname() {
 function setPasswordMode(shouldValidate = true) {
   const isAuto = getPasswordMode() === "auto";
 
+  fields.password.type = "text";
+  fields.repeatPassword.type = "password";
+
   fields.password.readOnly = isAuto;
-  fields.repeatPassword.readOnly = isAuto;
+  fields.repeatPassword.readOnly = false;
 
   if (isAuto) {
     const password = generatePassword();
+
     fields.password.value = password;
     fields.repeatPassword.value = password;
+
     setError("registerPassword", "");
     setError("repeatPassword", "");
   } else {

@@ -18,7 +18,7 @@ function renderCart(items) {
   cartContainer.innerHTML = "";
 
   if (items.length === 0) {
-    cartContainer.innerHTML = '<p class="catalog-empty">No products found.</p>';
+    cartContainer.innerHTML = '<p class="catalog-empty">No products found</p>';
     cartTotal.textContent = "Total: $0";
     checkoutButton.disabled = true;
     return;
@@ -79,6 +79,8 @@ async function updateQuantity(id, quantity) {
     return;
   }
 
+
+  
   await fetch(`${API_URL}/cart/${id}`, {
     method: "PATCH",
     headers: {

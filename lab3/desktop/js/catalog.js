@@ -207,6 +207,7 @@ async function addToCart(productId) {
   } else {
     const cartItem = cartItems[0];
 
+    
     await fetch(`${API_URL}/cart/${cartItem.id}`, {
       method: "PATCH",
       headers: {
