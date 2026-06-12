@@ -251,25 +251,38 @@ const UI_API_URL = "http://localhost:3001";
   }
 
   function setupParallax() {
-    const section = document.querySelector("[data-parallax]");
+    const section = document.querySelector(".parallax");
+    const backLayer = section?.querySelector(".parallax__layer--back");
+    const frontLayer = section?.querySelector(".parallax__layer--front");
 
-    if (!section) {
+    if (!section || !backLayer || !frontLayer) {
       return;
     }
 
+    let frameRequested = false;
+
     function moveLayers() {
       const rect = section.getBoundingClientRect();
-      const progress = rect.top / window.innerHeight;
+      const travelDistance = window.innerHeight + rect.height;
+      const visibleDistance = window.innerHeight - rect.top;
+      const progress = Math.min(Math.max(visibleDistance / travelDistance, 0), 1);
+      const scrolled = progress * rect.height;
 
-      section.querySelectorAll("[data-parallax-speed]").forEach((layer) => {
-        const speed = Number(layer.dataset.parallaxSpeed);
-        layer.style.transform = `translate3d(0, ${progress * speed}px, 0)`;
-      });
+      backLayer.style.transform = `translate3d(0, ${scrolled * -0.2}px, 0)`;
+      frontLayer.style.transform = `translate3d(0, ${scrolled * -0.5}px, 0)`;
+      frameRequested = false;
+    }
+
+    function requestMove() {
+      if (!frameRequested) {
+        window.requestAnimationFrame(moveLayers);
+        frameRequested = true;
+      }
     }
 
     moveLayers();
-    window.addEventListener("scroll", moveLayers, { passive: true });
-    window.addEventListener("resize", moveLayers);
+    window.addEventListener("scroll", requestMove, { passive: true });
+    window.addEventListener("resize", requestMove);
   }
 
   function setupCounters() {
@@ -456,13 +469,20 @@ const UI_API_URL = "http://localhost:3001";
 
     image.addEventListener("click", () => {
       if (items[current].video) {
-        openModal(document.querySelector("#videoModal"));
+        openGalleryVideo();
       }
     });
 
     videoButton?.addEventListener("click", () => {
-      openModal(document.querySelector("#videoModal"));
+      openGalleryVideo();
     });
+
+    function openGalleryVideo() {
+      const modal = document.querySelector("#videoModal");
+      const video = modal?.querySelector("video");
+      openModal(modal);
+      video?.play().catch(() => {});
+    }
   }
 
   function openProductModal(product) {

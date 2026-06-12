@@ -317,28 +317,17 @@
           </div>
         </section>
 
-        <section class="auraglow-parallax" data-parallax>
-          <div
-            class="auraglow-parallax__layer auraglow-parallax__layer--back"
-            data-parallax-speed="18"
-          ></div>
-          <div
-            class="auraglow-parallax__layer auraglow-parallax__layer--middle"
-            data-parallax-speed="-34"
-          >
-            <img src="../assets/product/product-kit.png" alt="" />
+        <section class="parallax">
+          <div class="parallax__layer parallax__layer--back">
+            <img
+              src="../assets/images/mountains.jpg"
+              alt="Mountains"
+            />
           </div>
-          <div
-            class="auraglow-parallax__layer auraglow-parallax__layer--front"
-            data-parallax-speed="58"
-          >
-            <img src="../assets/product/product-pen.png" alt="" />
-          </div>
-          <div class="auraglow-parallax__content">
-            <h2 class="auraglow-parallax__title">A glow that moves with you</h2>
-            <p class="auraglow-parallax__text">
-              Three soft layers drift at different speeds while the page scrolls.
-            </p>
+
+          <div class="parallax__layer parallax__layer--front">
+            <!-- Source: Wikimedia Commons, "Scots pine tree silhouettes", CC BY-SA 4.0. -->
+            <img src="../assets/images/forest.png" alt="Forest" />
           </div>
         </section>
 
@@ -409,13 +398,18 @@
             >
               x
             </button>
-            <iframe
+            <video
               class="video-frame"
-              src="https://www.youtube.com/embed/ysz5S6PUM-U"
-              title="Auraglow video"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-            ></iframe>
+              controls
+              preload="metadata"
+              poster="../assets/images/proof-whitening.png"
+            >
+              <source
+                src="../assets/video/auraglow-whitening.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support HTML5 video.
+            </video>
           </div>
         </section>
 
