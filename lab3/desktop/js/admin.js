@@ -362,6 +362,7 @@ function attachProductValidation(prefix, callback) {
   });
 }
 
+// Модальные окна админ-панели
 function setupAdminModals() {
   if (document.querySelector(".admin-modal-actions")) {
     return;

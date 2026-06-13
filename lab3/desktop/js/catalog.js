@@ -226,6 +226,7 @@ async function addToCart(productId) {
     });
   }
 
+  // Уведомление 
   showToast("Product added to cart.", "success");
   window.AuraglowUI?.updateCounters();
 }
@@ -251,6 +252,7 @@ function handleProductsClick(event) {
     return;
   }
 
+  // Модальное окно товара
   const card = event.target.closest(".catalog-card[data-product-id]");
 
   if (card) {

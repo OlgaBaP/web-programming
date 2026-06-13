@@ -5,10 +5,11 @@
   color: #08263f;
 }
 
+/* Плавная прокрутка */
 html {
   scroll-behavior: smooth;
 }
-
+/* Бургер меню */
 body.is-locked {
   overflow: hidden;
 }
@@ -662,7 +663,7 @@ body.is-locked {
     color: #fed097;
   }
 }
-
+/* Прелоадер */
 .site-preloader {
   position: fixed;
   inset: 0;
@@ -773,6 +774,7 @@ body.is-locked {
   transform: translateY(-7px) rotate(-45deg);
 }
 
+/* Бургер меню */
 .menu-overlay {
   position: fixed;
   inset: 0;
@@ -1211,6 +1213,7 @@ body.is-locked {
   object-fit: contain;
 }
 
+/* карта */
 .store-map {
   padding: 78px 70px;
   background-color: #ffffff;

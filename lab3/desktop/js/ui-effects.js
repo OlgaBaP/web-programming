@@ -1,5 +1,6 @@
 const UI_API_URL = "http://localhost:3001";
 
+// Звук
 (function () {
   const productSounds = [
     220, 247, 262, 294, 330, 349, 392, 440, 494, 523, 587, 659,
@@ -20,6 +21,7 @@ const UI_API_URL = "http://localhost:3001";
     }
   }
 
+  // Прелоадер
   function createPreloader() {
     const preloader = document.createElement("div");
     preloader.className = "site-preloader";
@@ -39,6 +41,7 @@ const UI_API_URL = "http://localhost:3001";
     });
   }
 
+  // Popup уведомления
   function createToastArea() {
     let area = document.querySelector(".toast-area");
 
@@ -52,6 +55,7 @@ const UI_API_URL = "http://localhost:3001";
     return area;
   }
 
+  // показывает уведомление
   function showToast(message, type = "info") {
     const area = createToastArea();
     const toast = document.createElement("div");
@@ -67,9 +71,11 @@ const UI_API_URL = "http://localhost:3001";
     }, 2800);
   }
 
+  // Бургер меню
   function setupBurgerMenu() {
     const nav = document.querySelector(".catalog-nav, .nav");
-    const header = nav?.closest(".catalog-header") || nav?.closest(".header__row");
+    const header =
+      nav?.closest(".catalog-header") || nav?.closest(".header__row");
 
     if (!nav || !header || document.querySelector(".burger-button")) {
       return;
@@ -116,6 +122,7 @@ const UI_API_URL = "http://localhost:3001";
     });
   }
 
+  // Модальные окна
   function openModal(modal) {
     if (!modal) {
       return;
@@ -126,7 +133,7 @@ const UI_API_URL = "http://localhost:3001";
     modalOpened = true;
     lockPage();
   }
-
+  //  iframe и видео
   function closeModal(modal) {
     if (!modal) {
       return;
@@ -143,9 +150,10 @@ const UI_API_URL = "http://localhost:3001";
         media.src = media.src;
       }
     });
+
     unlockPage();
   }
-
+  // открытие и закрытие модального окна
   function setupModals() {
     document.addEventListener("click", (event) => {
       const opener = event.target.closest("[data-modal-target]");
@@ -172,6 +180,7 @@ const UI_API_URL = "http://localhost:3001";
     });
   }
 
+  // Слайдер
   function setupSlider() {
     document.querySelectorAll("[data-slider]").forEach((slider) => {
       const slides = slider.querySelectorAll(".glow-slider__slide");
@@ -201,7 +210,7 @@ const UI_API_URL = "http://localhost:3001";
       next?.addEventListener("click", () => restart(current + 1));
     });
   }
-
+  // Плавная прокрутка
   function setupSmoothScroll() {
     document.addEventListener("click", (event) => {
       const link = event.target.closest('a[href^="#"]');
@@ -219,6 +228,7 @@ const UI_API_URL = "http://localhost:3001";
     });
   }
 
+  // Анимации при прокрутке
   function setupReveal() {
     const items = document.querySelectorAll(
       "section, .catalog-card, .review-card, .form-panel, .glow-slider, .media-gallery",
@@ -249,7 +259,7 @@ const UI_API_URL = "http://localhost:3001";
       }
     });
   }
-
+  // Параллакс
   function setupParallax() {
     const section = document.querySelector(".parallax");
     const backLayer = section?.querySelector(".parallax__layer--back");
@@ -265,7 +275,10 @@ const UI_API_URL = "http://localhost:3001";
       const rect = section.getBoundingClientRect();
       const travelDistance = window.innerHeight + rect.height;
       const visibleDistance = window.innerHeight - rect.top;
-      const progress = Math.min(Math.max(visibleDistance / travelDistance, 0), 1);
+      const progress = Math.min(
+        Math.max(visibleDistance / travelDistance, 0),
+        1,
+      );
       const scrolled = progress * rect.height;
 
       backLayer.style.transform = `translate3d(0, ${scrolled * -0.2}px, 0)`;
@@ -289,6 +302,7 @@ const UI_API_URL = "http://localhost:3001";
     updateCounters();
   }
 
+  // загружает количество записей, счетчик
   async function fetchCount(path, sumQuantity = false) {
     const response = await fetch(`${UI_API_URL}${path}`);
 
@@ -307,6 +321,7 @@ const UI_API_URL = "http://localhost:3001";
       : items.length;
   }
 
+  // анимированный счетчик
   function animateCounter(element, target) {
     const start = Number(element.dataset.value || 0);
     const duration = 700;
@@ -391,18 +406,60 @@ const UI_API_URL = "http://localhost:3001";
     if (!gallery) {
       return;
     }
-
+    //  Элементы галереи, их изображения и звуки
     const items = [
-      { image: "../assets/product/product-kit.png", title: "LED Kit", frequency: productSounds[0] },
-      { image: "../assets/product/product-gel.png", title: "Whitening Gel", frequency: productSounds[1] },
-      { image: "../assets/product/product-pen.png", title: "Whitening Pen", frequency: productSounds[2] },
-      { image: "../assets/product/product-strips.png", title: "Strips", frequency: productSounds[3] },
-      { image: "../assets/product/product-toothpaste.png", title: "Daily Toothpaste", frequency: productSounds[4] },
-      { image: "../assets/product/product-serum.png", title: "Serum", frequency: productSounds[5] },
-      { image: "../assets/product/product-trays.png", title: "Trays", frequency: productSounds[6] },
-      { image: "../assets/product/product-refills.png", title: "Refills", frequency: productSounds[7] },
-      { image: "../assets/product/product-led-light.png", title: "Video demo", frequency: productSounds[8], video: true },
-      { image: "../assets/product/product-travel-kit.png", title: "Travel Kit", frequency: productSounds[9] },
+      {
+        image: "../assets/product/product-kit.png",
+        title: "LED Kit",
+        frequency: productSounds[0],
+      },
+      {
+        image: "../assets/product/product-gel.png",
+        title: "Whitening Gel",
+        frequency: productSounds[1],
+      },
+      {
+        image: "../assets/product/product-pen.png",
+        title: "Whitening Pen",
+        frequency: productSounds[2],
+      },
+      {
+        image: "../assets/product/product-strips.png",
+        title: "Strips",
+        frequency: productSounds[3],
+      },
+      {
+        image: "../assets/product/product-toothpaste.png",
+        title: "Daily Toothpaste",
+        frequency: productSounds[4],
+      },
+      {
+        image: "../assets/product/product-serum.png",
+        title: "Serum",
+        frequency: productSounds[5],
+      },
+      {
+        image: "../assets/product/product-trays.png",
+        title: "Trays",
+        frequency: productSounds[6],
+      },
+      {
+        image: "../assets/product/product-refills.png",
+        title: "Refills",
+        frequency: productSounds[7],
+      },
+      {
+        image: "../assets/product/product-led-light.png",
+        title: "Video demo",
+        frequency: productSounds[8],
+        // видео
+        video: true,
+      },
+      {
+        image: "../assets/product/product-travel-kit.png",
+        title: "Travel Kit",
+        frequency: productSounds[9],
+      },
     ];
 
     const image = gallery.querySelector("[data-gallery-image]");
@@ -412,6 +469,7 @@ const UI_API_URL = "http://localhost:3001";
     const videoButton = gallery.querySelector("[data-video-open]");
     let current = 0;
 
+    // проигрывает звук при смене изображения
     function playTone(frequency) {
       audioContext = audioContext || new AudioContext();
       const oscillator = audioContext.createOscillator();
@@ -435,7 +493,7 @@ const UI_API_URL = "http://localhost:3001";
         status.textContent = "Paused";
       });
     }
-
+    // показывает элемент галереи и проигрывает соответствующий звук
     function showItem(index) {
       const item = items[index];
       image.classList.add("is-switching");
@@ -485,6 +543,7 @@ const UI_API_URL = "http://localhost:3001";
     }
   }
 
+  // Модальное окно товара
   function openProductModal(product) {
     let modal = document.querySelector("#productDetailModal");
 
